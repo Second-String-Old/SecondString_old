@@ -4,11 +4,42 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose =  require('mongoose');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
+//connecting to database
+mongoose.connect(mongodbUri);
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function callback (){
+  
+  var exampleSchema = mongoose.Schema({
+    team: String,
+    wins: Number,
+    losses: Number
+  });
+  
+  var team = mongoose.model('Teams', exampleSchema);
+  
+  var pats = new team({
+    team: 'Pats',
+    wins: 18,
+    losses: 0
+  });
+  
+  pats.save();
+  
+  mongoose.connection.db.close(function (err){
+    if(err) throw err;
+  });
+  
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
