@@ -16,26 +16,25 @@ mongoose.connect(mongodbUri);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
-
+db.on("open", function(){
+  console.log("mongodb is connected!!");
+});
 db.once('open', function callback (){
   
-  var exampleSchema = mongoose.Schema({
-    team: String,
-    wins: Number,
-    losses: Number
+  //collec.insert({name: 'Boston Red Sox'});
+  var teamCollec = db.collection('Teams');
+  teamCollec.find().toArray(function(err, Teams){
+    if(err) {return console.dir(err);}
+    console.log(Teams);
   });
   
-  var team = mongoose.model('Teams', exampleSchema);
-  
-  var pats = new team({
-    team: 'Pats',
-    wins: 18,
-    losses: 0
-  });
-  
-  pats.save();
-  
-  mongoose.connection.db.close(function (err){
+  //collec.remove({name: 'yankees'});
+  /*collec.find().toArray(function(err, Teams){
+    if(err) {return console.dir(err);}
+    console.log(Teams);
+  });*/
+    
+  db.close(function (err){
     if(err) throw err;
   });
   
