@@ -77,6 +77,10 @@ if (app.get('env') === 'development') {
   });
 }
 
+app.listen(5000, function() {
+  console.log('Example app listening on port 5000!');
+});
+
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
