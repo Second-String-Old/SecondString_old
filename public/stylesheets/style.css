@@ -6,7 +6,38 @@ a {
   color: #00B7FF;
 }
 
-.topbar{
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: green;
+    border: 1px solid black;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: green;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.selections{
 	border: 1px solid black;
-	height: 10%;
+	margin: auto;
+	overflow: auto;
 }

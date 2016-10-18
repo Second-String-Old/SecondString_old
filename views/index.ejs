@@ -10,12 +10,108 @@
     <link href="/stylesheets/table.css" rel="stylesheet"> 
   </head>
   <body>
-    <div class="topbar"><h2>test</h2></div>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <!--<div id = "team-table" class></div>-->
-    
-    <!--<script src="/javascripts/table.js"></script>-->
+    <ul style="margin: 0;">
+      <li><a href="default.asp">Second String</a></li>
+      <li><a href="stats.asp">Stats</a></li>
+      <li><a href="contact.asp">Projected Stats</a></li>
+      <li><a href="about.asp">Upcoming Games</a></li>
+    </ul>
+
+    <div class="selections">
+      <table style="width:25%; float:left;">
+        <tr>
+          <td>Position</td>
+          <td><a href="#">QB</a></td>
+          <td><a href="#">WR</a></td>
+          <td><a href="#">RB</a></td>
+          <td><a href="#">LB</a></td>
+          <td><a href="#">TE</a></td>
+        </tr>
+        <tr>
+          <td>Season</td>
+          <td><a href="#">2016</a></td>
+          <td><a href="#">2015</a></td>
+          <td><a href="#">2014</a></td>
+          <td><a href="#">2013</a></td>
+          <td><a href="#">2012</a></td>
+        </tr>
+        <tr>
+          <td>Week</td>
+          <td><a href="#">7</a></td>
+          <td><a href="#">6</a></td>
+          <td><a href="#">5</a></td>
+          <td><a href="#">4</a></td>
+          <td><a href="#">3</a></td>
+        </tr>
+      </table>
+      <form action="demo_form.asp" style="float:right;">
+        <input type="text" name="team"><br>
+        <input type="submit" value="Search Team">
+      </form>
+      <form action="demo_form.asp" style="float:right;">
+        <input type="text" name="player"><br>
+        <input type="submit" value="Search Player">
+      </form>
+    </div>
+    <table style="width:100%;">
+        <tr>
+          <td>Player Name</td>
+          <td>Team</td> 
+          <td>Completion %</td>
+          <td>Yards</td>
+          <td>Touchdowns</td>
+          <td>Interceptions</td>
+        </tr>
+        <tr>
+          <td>Matt Ryan</td>
+          <td>Atl</td> 
+          <td>68%</td>
+          <td>2075</td>
+          <td>15</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>Ben Roethlisberger</td>
+          <td>Pit</td>
+          <td>64%</td>
+          <td>1685</td>
+          <td>16</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>Matthew Stafford</td>
+          <td>Det</td>
+          <td>69%</td>
+          <td>1648</td>
+          <td>14</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Andrew Luck</td>
+          <td>Ind</td>
+          <td>65%</td>
+          <td>1721</td>
+          <td>11</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Drew Brees</td>
+          <td>NO</td>
+          <td>67%</td>
+          <td>1734</td>
+          <td>14</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Derek Carr</td>
+          <td>Oak</td>
+          <td>67%</td>
+          <td>1608</td>
+          <td>12</td>
+          <td>3</td>
+        </tr>
+
+      </table>
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
