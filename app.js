@@ -21,27 +21,20 @@ db.on("open", function(){
 });
 db.once('open', function callback (){
   
-  
-  var collec = db.collection('Teams');
-  /*collec.find().toArray(function(err, Teams){
-    if(err) {return console.dir(err);}
-    console.log(Teams);
-  });*/
-  
   //collec.insert({name: 'Boston Red Sox'});
-  
-   collec.find().toArray(function(err, Teams){
+  var teamCollec = db.collection('Teams');
+  teamCollec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
     console.log(Teams);
   });
   
   //collec.remove({name: 'yankees'});
-  collec.find().toArray(function(err, Teams){
+  /*collec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
     console.log(Teams);
-  });
-  
-  mongoose.connection.db.close(function (err){
+  });*/
+    
+  db.close(function (err){
     if(err) throw err;
   });
   
