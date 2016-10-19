@@ -60,3 +60,19 @@ db.getCollection('Players').insert({
     
     
     })
+
+//te stats input
+db.getCollection('Players').insert({
+    name:'Delanie Walker',
+    POS:'TE',
+    team:'Titans',
+    gp:5,
+    recs:17,
+    tars:29,
+    recyards:246,
+    rectuddies:2,
+    fum:1,
+    fumlost:0
+    
+    
+    })
