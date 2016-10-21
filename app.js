@@ -22,12 +22,7 @@ db.on("open", function(){
 db.once('open', function callback (){
   
   //collec.insert({name: 'Boston Red Sox'});
-  var teamCollec = db.collection('Teams');
-  teamCollec.find().toArray(function(err, Teams){
-    if(err) {return console.dir(err);}
-    console.log(Teams);
-  });
-  
+
   //collec.remove({name: 'yankees'});
   /*collec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
@@ -43,6 +38,14 @@ db.once('open', function callback (){
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+var teamCollec = db.collection('Teams');
+app.get('/', function(req, res) {
+  teamCollec.find().toArray(function(err, Teams){
+    if(err) {return console.dir(err);}
+    console.log(Teams);
+    res.render('views/index.ejs',{data:Teams}); 
+  });
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -89,6 +92,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 
 module.exports = app;
