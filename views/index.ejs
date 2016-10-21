@@ -17,7 +17,7 @@
       <li><a href="about.asp">Upcoming Games</a></li>
     </ul>
 
-    <div class="selections">
+    <div class="selections" >
       <table style="width:25%; float:left;">
         <tr>
           <td>Position</td>
@@ -113,9 +113,9 @@
 
       </table>
     <ul>
-      <% Teams.forEach(function(Teams) { %>
-          <li><%= Teams.name %></li>
-          <li><%= Teams.div %></li>
+      <% data.forEach(function(Team) { %>
+          <li><%= Team.name %></li>
+          <li><%= Team.div %></li>
     <% }); %>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

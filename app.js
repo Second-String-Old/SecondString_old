@@ -12,16 +12,18 @@ var users = require('./routes/users');
 
 
 var app = express();
+
 var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
 //connecting to database
-mongoose.connect(mongodbUri);
-var db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'connection error:'));
+/*mongoose.createConnection(mongodbUri);
+var db = mongoose.connection;*/
+
+/*db.on('error', console.error.bind(console, 'connection error:'));
 db.on("open", function(){
   console.log("mongodb is connected!!");
-});
-db.once('open', function callback (){
+});*/
+/*db.once('open', function callback (){
   
   //collec.insert({name: 'Boston Red Sox'});
 
@@ -29,32 +31,33 @@ db.once('open', function callback (){
   teamCollec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
     console.log(Teams);
-  });*/
+  });
   
 
   //collec.remove({name: 'yankees'});
   /*collec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
     console.log(Teams);
-  });*/
+  });
     
   db.close(function (err){
     if(err) throw err;
   });
   
-});
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-var teamCollec = db.collection('Teams');
-app.get('/', function(req, res) {
+
+/*app.use('/', function(req, res) {
+  var teamCollec = db.collection('Teams');
   teamCollec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
     console.log(Teams);
     res.render('views/index.ejs',{data:Teams}); 
   });
-});
+});*/
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -65,7 +68,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+//app.use('/users', users);
 //app.use('/stats', routes);
 //app.use('/projected',routes);
 
