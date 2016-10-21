@@ -28,8 +28,8 @@ router.get('/stats', function(req, res, next) {
   res.render('stats.ejs', { title: 'Second String' });
 });
 
-router.get('/projected', function(req, res, next) {
-  res.render('projected.ejs', { title: 'Second String' });
+router.get('/index', function(req, res, next) {
+  res.render('index.ejs', { title: 'Second String' });
 });
 
 module.exports = router;
