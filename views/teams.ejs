@@ -20,14 +20,6 @@
     <div class="selections" >
       <table style="width:25%; float:left;">
         <tr>
-          <td>Position</td>
-          <td><a href="#">QB</a></td>
-          <td><a href="#">WR</a></td>
-          <td><a href="#">RB</a></td>
-          <td><a href="#">LB</a></td>
-          <td><a href="#">TE</a></td>
-        </tr>
-        <tr>
           <td>Season</td>
           <td><a href="#">2016</a></td>
           <td><a href="#">2015</a></td>
@@ -64,15 +56,15 @@
           <td>Reception TDs</td>
           <td>Rush TDs</td>
         </tr>
-      <% data.forEach(function(Player) { %>
+      <% data.forEach(function(Team) { %>
         <tr>
-          <td><input class="form-control" value="<%=Player.name %>"></td>
-          <td><input class="form-control" value="<%=Player.team %>"></td>
-          <td><input class="form-control" value="<%=Player.POS %>"></td>
-          <td><input class="form-control" value="<%=Player.gp %>"></td>
-          <td><input class="form-control" value="<%=Player.recs %>"></td>
-          <td><input class="form-control" value="<%=Player.rectuddies %>"></td>
-          <td><input class="form-control" value="<%=Player.rushtuddies %>"></td>
+          <td><input class="form-control" value="<%=Team.name %>"></td>
+          <td><input class="form-control" value="<%=Team.team %>"></td>
+          <td><input class="form-control" value="<%=Team.POS %>"></td>
+          <td><input class="form-control" value="<%=Team.gp %>"></td>
+          <td><input class="form-control" value="<%=Team.recs %>"></td>
+          <td><input class="form-control" value="<%=Team.rectuddies %>"></td>
+          <td><input class="form-control" value="<%=Team.rushtuddies %>"></td>
         </tr>
       <% }); %>
       </table>
