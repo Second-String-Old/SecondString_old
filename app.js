@@ -6,8 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose =  require('mongoose');
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
 
 var app = express();
 var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
@@ -22,11 +24,11 @@ db.on("open", function(){
 db.once('open', function callback (){
   
   //collec.insert({name: 'Boston Red Sox'});
-  var teamCollec = db.collection('Teams');
+  /*var teamCollec = db.collection('Teams');
   teamCollec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
     console.log(Teams);
-  });
+  });*/
   
   //collec.remove({name: 'yankees'});
   /*collec.find().toArray(function(err, Teams){
@@ -54,6 +56,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+//app.use('/stats', routes);
+//app.use('/projected',routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -76,9 +80,9 @@ if (app.get('env') === 'development') {
   });
 }
 
-app.listen(5000, function() {
+/*app.listen(5000, function() {
   console.log('Example app listening on port 5000!');
-});
+});*/
 
 // production error handler
 // no stacktraces leaked to user
