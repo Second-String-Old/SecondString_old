@@ -15,11 +15,11 @@ router.get('/', function(req, res, next) {
   var teamCollec = db.collection('Players');
   teamCollec.find().toArray(function(err, Players){
     if(err) {return console.dir(err);}
-    console.log(Players);
+    //console.log(Players);
     res.render('index', { title: 'Second String', data:Players });
-    db.close(function (err){
-      if(err) throw err;
-    });
+    // db.close(function (err){
+    //   if(err) throw err;
+    // });
   });
   
 });

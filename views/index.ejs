@@ -55,7 +55,7 @@
     </div>
     
       <table>
-        <tr>
+        <tr class="header">
           <td>Name</td>
           <td>Team</td>
           <td>Position</td>
@@ -66,13 +66,13 @@
         </tr>
       <% data.forEach(function(Player) { %>
         <tr>
-          <td><input class="form-control" value="<%=Player.name %>"></td>
-          <td><input class="form-control" value="<%=Player.team %>"></td>
-          <td><input class="form-control" value="<%=Player.POS %>"></td>
-          <td><input class="form-control" value="<%=Player.gp %>"></td>
-          <td><input class="form-control" value="<%=Player.recs %>"></td>
-          <td><input class="form-control" value="<%=Player.rectuddies %>"></td>
-          <td><input class="form-control" value="<%=Player.rushtuddies %>"></td>
+          <td><%=Player.name %></td>
+          <td><%=Player.team %></td>
+          <td><%=Player.POS %></td>
+          <td><%=Player.gp %></td>
+          <td><%=Player.recs %></td>
+          <td><%=Player.rectuddies %></td>
+          <td><%=Player.rushtuddies %></td>
         </tr>
       <% }); %>
       </table>
