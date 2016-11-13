@@ -21,7 +21,6 @@ router.get('/teams', function(req, res, next) {
       if(err) throw err;
     });
   });
-  
 });
 
 router.get('/stats', function(req, res, next) {
