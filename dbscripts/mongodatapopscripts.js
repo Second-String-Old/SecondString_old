@@ -1,28 +1,28 @@
-
-
-//qb stats input
-
-
-
+    
+//general input for new player
 db.getCollection('Players').insert({
-    name:'Tyrod Taylor',
-    POS:'QB',
-    team:'Bills',
-    gp:6,
-    comp:103,
-    att:165,
-    compper:62.4,
+    name:'name',
+    POS:'pos',
+    team:'team',
+    gp:6,           //games played
+    att:0,          //number of rushing attempts
+    rushyards:236,  
+    rushtuddies:1,
+    recs:0,         //receptions
+    tars:0,         //targets
+    recyards:0,
+    rectuddies:0,
+    comp:103,       //completions
+    passatt:165,    //pass attempts
     pyards:1076,
     ptds:8,
     ints:2,
     fum:3,
-    fumlost:1,
-    carries:34,
-    rushyards:236,
-    rushtuddies:1
-    
+    fumlost:1
     })
+    
 
+//old aggs w/o all indexes
 
 //wr stats input
 db.getCollection('Players').insert({
