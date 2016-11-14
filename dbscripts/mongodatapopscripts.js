@@ -1,9 +1,9 @@
-    
 //general input for new player
 db.getCollection('Players').insert({
     name:'name',
     POS:'pos',
     team:'team',
+    num:1,
     gp:6,           //games played
     att:0,          //number of rushing attempts
     rushyards:236,  
@@ -21,3 +21,8 @@ db.getCollection('Players').insert({
     fumlost:1
     })
     
+
+
+
+
+
