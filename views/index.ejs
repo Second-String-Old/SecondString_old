@@ -71,7 +71,7 @@
         </tr>
       <script>var arr = <%- JSON.stringify(data); %></script>
       <% data.forEach(function(Player) { %>
-        <% if(Player.POS == "WR"){ %>
+        <% if(Player.name != "name"){ %>
         <tr>
           <td><%=Player.name %></td>
           <td><%=Player.team %></td>
