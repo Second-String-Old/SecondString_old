@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #DCD0C0;
 }
 
 a {
@@ -11,17 +12,18 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: green;
+    background-color: #083683;
     border: 1px solid black;
 }
 
 li {
     float: left;
+    border: 1px solid black;
 }
 
 li a {
     display: block;
-    color: black;
+    color: #B8ECD7;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -37,7 +39,17 @@ table, th, td {
 }
 
 .selections{
-	border: 1px solid black;
-	margin: auto;
+	margin: 10px 10px;
 	overflow: auto;
+}
+
+.search{
+    border: 1px solid black;
+    float: right;
+    padding: 5px;
+    background-color: #EBEBEB;
+}
+
+.stats{
+    margin: 10px;
 }

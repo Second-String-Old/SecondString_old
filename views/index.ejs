@@ -24,8 +24,8 @@
           <td><a href="#">QB</a></td>
           <td><a href="javascript:updateTable('WR', arr)">WR</a></td>
           <td><a href="javascript:updateTable('RB', arr)">RB</a></td>
-          <td><a href="#">LB</a></td>
           <td><a href="#">TE</a></td>
+          <td><a href="javascript:updateTable('FLEX', arr)">FLEX</a></td>
         </tr>
         <tr>
           <td>Season</td>
@@ -44,28 +44,31 @@
           <td><a href="#">3</a></td>
         </tr>
       </table>
-      <form action="demo_form.asp" style="float:right;">
-        <input type="text" name="team"><br>
-        <input type="submit" value="Search Team">
-      </form>
-      <form action="demo_form.asp" style="float:right;">
-        <input type="text" name="player"><br>
-        <input type="submit" value="Search Player">
-      </form>
+      <div class="search">
+        <form action="">
+          <input type="text" name="team" id="teamSearch"><br>
+          <input type="submit" value="Search Team">
+        </form>
+        </br>
+        <form action="">
+          <input type="text" name="player" id="playerSearch"><br>
+          <input type="submit" value="Search Player" onClick="javascript:searchPlayer(arr)">
+        </form>
+      </div>
     </div>
     
+    <div class="stats">
       <table id="table">
         <tr class="header">
           <td>Name</td>
           <td>Team</td>
           <td>Position</td>
-          <td>Games Played</td>
+          <td><a href="javascript:sort('gp', arr)">Games Played</a></td>
           <td>Receptions</td>
           <td>Reception TDs</td>
           <td>Rush TDs</td>
         </tr>
       <script>var arr = <%- JSON.stringify(data); %></script>
-      <script>console.log(arr);</script>
       <% data.forEach(function(Player) { %>
         <% if(Player.POS == "WR"){ %>
         <tr>
@@ -80,6 +83,7 @@
         <% } %>
       <% }); %>
       </table>
+    </div>
       
    
     
