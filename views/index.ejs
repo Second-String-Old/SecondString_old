@@ -24,7 +24,7 @@
           <td><a href="#">QB</a></td>
           <td><a href="javascript:updateTable('WR', arr)">WR</a></td>
           <td><a href="javascript:updateTable('RB', arr)">RB</a></td>
-          <td><a href="#">TE</a></td>
+          <td><a href="javascript:updateTable('TE', arr)">TE</a></td>
           <td><a href="javascript:updateTable('FLEX', arr)">FLEX</a></td>
         </tr>
         <tr>
@@ -45,14 +45,14 @@
         </tr>
       </table>
       <div class="search">
-        <form action="">
+        <form>
           <input type="text" name="team" id="teamSearch"><br>
-          <input type="submit" value="Search Team">
+          <input type="button" value="Search Team" onClick="javascript:searchTeam(arr)">
         </form>
         </br>
-        <form action="">
+        <form>
           <input type="text" name="player" id="playerSearch"><br>
-          <input type="submit" value="Search Player" onClick="javascript:searchPlayer(arr)">
+          <input type="button" value="Search Player" onClick="javascript:searchPlayer(arr)">
         </form>
       </div>
     </div>
@@ -60,13 +60,14 @@
     <div class="stats">
       <table id="table">
         <tr class="header">
-          <td>Name</td>
-          <td>Team</td>
-          <td>Position</td>
+          <td><a href="javascript:sort('name', arr)">Name</a></td>
+          <td><a href="javascript:sort('team', arr)">Team</a></td>
+          <td><a href="javascript:sort('POS', arr)">Position</a></td>
           <td><a href="javascript:sort('gp', arr)">Games Played</a></td>
-          <td>Receptions</td>
-          <td>Reception TDs</td>
-          <td>Rush TDs</td>
+          <td><a href="javascript:sort('recs', arr)">Receptions</a></td>
+          <td><a href="javascript:sort('yards', arr)">Yards</a></td>
+          <td><a href="javascript:sort('rectuddies', arr)">Reception TDs</a></td>
+          <td><a href="javascript:sort('rushtuddies', arr)">Rush TDs</a></td>
         </tr>
       <script>var arr = <%- JSON.stringify(data); %></script>
       <% data.forEach(function(Player) { %>
@@ -77,6 +78,7 @@
           <td><%=Player.POS %></td>
           <td><%=Player.gp %></td>
           <td><%=Player.recs %></td>
+          <td><%=Player.rushyards + Player.recyards %></td>
           <td><%=Player.rectuddies %></td>
           <td><%=Player.rushtuddies %></td>
         </tr>
