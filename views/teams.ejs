@@ -36,43 +36,34 @@
           <td><a href="#">3</a></td>
         </tr>
       </table>
-      <form action="demo_form.asp" style="float:right;">
-        <input type="text" name="team"><br>
-        <input type="submit" value="Search Team">
-      </form>
-      <form action="demo_form.asp" style="float:right;">
-        <input type="text" name="player"><br>
-        <input type="submit" value="Search Player">
-      </form>
+      <div class="search">
+        <form>
+          <input type="text" name="team" id="teamSearch"><br>
+          <input type="button" value="Search Team">
+        </form>
+        </br>
+<!--         <form>
+          <input type="text" name="player" id="playerSearch"><br>
+          <input type="button" value="Search Player" onClick="javascript:searchPlayer(arr)">
+        </form> -->
+      </div>
     </div>
     
-      <table>
-        <tr>
-          <td>Name</td>
-          <td>Team</td>
-          <td>Position</td>
-          <td>Games Played</td>
-          <td>Receptions</td>
-          <td>Reception TDs</td>
-          <td>Rush TDs</td>
+    <div class="stats">
+      <table id="table">
+        <tr class="header">
+          <td><a href="javascript:sort('name', arr)">Name</a></td>
+          <td><a href="javascript:sort('div', arr)">Division</a></td>
         </tr>
-      <% data.forEach(function(Team) { %>
-        <tr>
-          <td><input class="form-control" value="<%=Team.name %>"></td>
-          <td><input class="form-control" value="<%=Team.team %>"></td>
-          <td><input class="form-control" value="<%=Team.POS %>"></td>
-          <td><input class="form-control" value="<%=Team.gp %>"></td>
-          <td><input class="form-control" value="<%=Team.recs %>"></td>
-          <td><input class="form-control" value="<%=Team.rectuddies %>"></td>
-          <td><input class="form-control" value="<%=Team.rushtuddies %>"></td>
-        </tr>
-      <% }); %>
+      
       </table>
+    </div>
       
    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
+    <!--<script src="/javascripts/update.js"></script>-->
 
   </body>
 
