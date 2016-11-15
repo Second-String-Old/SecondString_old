@@ -22,8 +22,8 @@
         <tr>
           <td>Position</td>
           <td><a href="#">QB</a></td>
-          <td><a href="#">WR</a></td>
-          <td><a href="#">RB</a></td>
+          <td><a href="javascript:updateTable('WR', arr)">WR</a></td>
+          <td><a href="javascript:updateTable('RB', arr)">RB</a></td>
           <td><a href="#">LB</a></td>
           <td><a href="#">TE</a></td>
         </tr>
@@ -54,7 +54,7 @@
       </form>
     </div>
     
-      <table>
+      <table id="table">
         <tr class="header">
           <td>Name</td>
           <td>Team</td>
@@ -64,7 +64,10 @@
           <td>Reception TDs</td>
           <td>Rush TDs</td>
         </tr>
+      <script>var arr = <%- JSON.stringify(data); %></script>
+      <script>console.log(arr);</script>
       <% data.forEach(function(Player) { %>
+        <% if(Player.POS == "WR"){ %>
         <tr>
           <td><%=Player.name %></td>
           <td><%=Player.team %></td>
@@ -74,6 +77,7 @@
           <td><%=Player.rectuddies %></td>
           <td><%=Player.rushtuddies %></td>
         </tr>
+        <% } %>
       <% }); %>
       </table>
       
@@ -81,6 +85,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/update.js"></script>
 
   </body>
 
