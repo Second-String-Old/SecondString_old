@@ -33,7 +33,7 @@ router.get('/teams', function(req, res, next) {
 });
 
 router.get('/games', function(req, res, next){
-  res.render('games.ejs', {title: 'Second String'});
+  res.render('games.ejs', {title: 'Second String - Upcoming Games'});
 });
 
 module.exports = router;
