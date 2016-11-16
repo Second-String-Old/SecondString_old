@@ -9,24 +9,24 @@ well as search from a search box we added.  We have been playing around with the
 some data files that we are going to pull from and cross reference with online data.
 
 The database is set up with 20 indexes for players:
-    name:'name',
-    POS:'pos',
-    team:'team',
-    num:0,          //jersey number
-    gp:0,           //games played
-    att:0,          //number of rushing attempts
-    rushyards:0,  
-    rushtuddies:0,
-    recs:0,         //receptions
-    tars:0,         //targets
-    recyards:0,
-    rectuddies:0,
-    comp:0,       //completions
-    passatt:0,    //pass attempts
-    pyards:0,
-    ptds:0,
-    ints:0,
-    fum:0,
-    fumlost:0
+\n    name:'name'
+\n    POS:'pos'
+\n    team:'team'
+\n    num:0          //jersey number
+\n    gp:0           //games played
+\n    att:0          //number of rushing attempts
+\n    rushyards:0  
+\n    rushtuddies:0
+\n    recs:0         //receptions
+\n    tars:0         //targets
+\n    recyards:0
+\n    rectuddies:0
+\n    comp:0       //completions
+\n    passatt:0    //pass attempts
+\n    pyards:0
+\n    ptds:0
+\n    ints:0
+\n    fum:0
+\n    fumlost:0
     
 More information as well as a blog can be found here : rcos.io/projects/cwilliamson226/secondstring/profile
