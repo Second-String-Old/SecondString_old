@@ -16,8 +16,43 @@
       <li><a href="/teams">Team Stats</a></li>
       <li><a href="/games">Upcoming Games</a></li>
     </ul>
+    <script type="text/javascript">
+        function getGames() {
+            var params = {
+                // Request parameters
+            };
+          
+            $.ajax({
+                url: "https://api.fantasydata.net/nfl/v2/JSON/Schedules/2016?" + $.param(params),
+                beforeSend: function(xhrObj){
+                    // Request headers
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","1b56b2ff60794b8fb2168cd46c9f63fb");
+                },
+                type: "GET",
+                // Request body
+                data: "{body}",
+            })
+            .done(function(data) {
+                alert("success");
+                console.log(data);
+            })
+            .fail(function() {
+                alert("error");
+            });
+        };
+    </script>
     <h1><%= title%></h1>  
-      
+    
+    <button onclick="javascript:getGames();"></button>
+    <div class = "stats">
+        <table id ="table">
+            <tr class="header">
+                <td>Week 11</td>
+                    
+            </tr>
+        </table>
+    </div>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
 
