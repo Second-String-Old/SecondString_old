@@ -11,11 +11,10 @@ db.on("open", function(){
   console.log("mongodb is connected!!");
 });
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/teams', function(req, res, next) {
   var teamCollec = db.collection('Teams');
   teamCollec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
-    // console.log(Teams);
     res.render('teams.ejs', { title: 'Second String', data: Teams });
     // db.close(function (err){
     //   if(err) throw err;

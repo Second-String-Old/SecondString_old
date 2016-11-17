@@ -52,9 +52,16 @@
     <div class="stats">
       <table id="table">
         <tr class="header">
-          <td><a href="javascript:sort('name', arr)">Name</a></td>
-          <td><a href="javascript:sort('div', arr)">Division</a></td>
+          <td><a href="javascript:Tsort('name', arr)">Name</a></td>
+          <td><a href="javascript:Tsort('div', arr)">Division</a></td>
         </tr>
+        <script>var arr = <%- JSON.stringify(data); %></script>
+        <% data.forEach(function(Team) { %>
+        <tr>
+          <td><%=Team.name %></td>
+          <td><%=Team.div %></td>
+        </tr>
+      <% }); %>
       
       </table>
     </div>
@@ -63,7 +70,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
-    <!--<script src="/javascripts/update.js"></script>-->
+    <script src="/javascripts/update.js"></script>
 
   </body>
 

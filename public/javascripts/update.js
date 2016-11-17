@@ -1,4 +1,5 @@
-var header = '<tr class="header">          <td><a href="javascript:sort(&quot;name&quot;, arr)">Name</a></td>          <td><a href="javascript:sort(&quot;team&quot;, arr)">Team</a></td>          <td><a href="javascript:sort(&quot;POS&quot;, arr)">Position</a></td>          <td><a href="javascript:sort(&quot;gp&quot;, arr)">Games Played</a></td>          <td><a href="javascript:sort(&quot;recs&quot;, arr)">Receptions</a></td>          <td><a href="javascript:sort(&quot;yards&quot;, arr)">Yards</a></td>          <td><a href="javascript:sort(&quot;rectuddies&quot;, arr)">Reception TDs</a></td>          <td><a href="javascript:sort(&quot;rushtuddies&quot;, arr)">Rush TDs</a></td>        </tr>'
+// var header = '<tr class="header">          <td><a href="javascript:sort(&quot;name&quot;, arr)">Name</a></td>          <td><a href="javascript:sort(&quot;team&quot;, arr)">Team</a></td>          <td><a href="javascript:sort(&quot;POS&quot;, arr)">Position</a></td>          <td><a href="javascript:sort(&quot;gp&quot;, arr)">Games Played</a></td>          <td><a href="javascript:sort(&quot;recs&quot;, arr)">Receptions</a></td>          <td><a href="javascript:sort(&quot;yards&quot;, arr)">Yards</a></td>          <td><a href="javascript:sort(&quot;rectuddies&quot;, arr)">Reception TDs</a></td>          <td><a href="javascript:sort(&quot;rushtuddies&quot;, arr)">Rush TDs</a></td>        </tr>'
+var header = '<tr class="header"> <td><a href="javascript:Tsort(&quot;name&quot;, arr)">Name</a></td> <td><a href="javascript:Tsort(&quot;div&quot;, arr)">Division</a></td></tr>'
 var currpos;
 
 function updateTable(pos, data){
@@ -31,6 +32,18 @@ function updateTable(pos, data){
       }
     });
   }
+} 
+
+function updateTTable(data){
+  var table = document.getElementById("table");
+  table.innerHTML = header;
+  data.forEach(function(Team) {
+    if(Team.name != 'name'){
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<tr>          <td>" + Team.name + "</td>          <td>" + Team.div + "</td>";
+      table.appendChild(tr);
+    }
+  });
 } 
 
 function searchPlayer(data){
@@ -168,4 +181,34 @@ function sort(param, data){
   }
 
   updateTable(currpos, data);
+}
+
+function Tsort(param, data){
+  //sort by name
+  if(param == 'name'){
+    data.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+  }
+  //sort by div
+  if(param == 'div'){
+    data.sort(function (a, b) {
+      if (a.div > b.div) {
+        return 1;
+      }
+      if (a.div < b.div) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+  }
+  updateTTable(data);
 }

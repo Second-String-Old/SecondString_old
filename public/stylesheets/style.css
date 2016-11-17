@@ -64,3 +64,8 @@ table, th, td {
 .stats{
     margin: 10px;
 }
+
+
+.stats tr {
+    background-color: gray;
+}

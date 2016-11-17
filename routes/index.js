@@ -29,7 +29,14 @@ router.get('/stats', function(req, res, next) {
 });
 
 router.get('/teams', function(req, res, next) {
-  res.render('teams.ejs', { title: 'Second String' });
+  var teamCollec = db.collection('Teams');
+  teamCollec.find().toArray(function(err, Teams){
+    if(err) {return console.dir(err);}
+    res.render('teams.ejs', { title: 'Second String', data: Teams });
+    // db.close(function (err){
+    //   if(err) throw err;
+    // });
+  });
 });
 
 router.get('/games', function(req, res, next){
