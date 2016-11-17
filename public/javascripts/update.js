@@ -1,55 +1,57 @@
-var pheader = '<tr class="header">          <td><a href="javascript:sort(&quot;name&quot;, arr)">Name</a></td>          <td><a href="javascript:sort(&quot;team&quot;, arr)">Team</a></td>          <td><a href="javascript:sort(&quot;POS&quot;, arr)">Position</a></td>          <td><a href="javascript:sort(&quot;gp&quot;, arr)">Games Played</a></td>          <td><a href="javascript:sort(&quot;recs&quot;, arr)">Receptions</a></td>          <td><a href="javascript:sort(&quot;yards&quot;, arr)">Yards</a></td>          <td><a href="javascript:sort(&quot;rectuddies&quot;, arr)">Reception TDs</a></td>          <td><a href="javascript:sort(&quot;rushtuddies&quot;, arr)">Rush TDs</a></td>        </tr>'
+var pheader = '<tr class="header">          <td><a href="javascript:sort(&quot;name&quot;, arr)">Name</a></td>          <td><a href="javascript:sort(&quot;data[i]&quot;, arr)">Team</a></td>          <td><a href="javascript:sort(&quot;POS&quot;, arr)">Position</a></td>          <td><a href="javascript:sort(&quot;gp&quot;, arr)">Games Played</a></td>          <td><a href="javascript:sort(&quot;recs&quot;, arr)">Receptions</a></td>          <td><a href="javascript:sort(&quot;yards&quot;, arr)">Yards</a></td>          <td><a href="javascript:sort(&quot;rectuddies&quot;, arr)">Reception TDs</a></td>          <td><a href="javascript:sort(&quot;rushtuddies&quot;, arr)">Rush TDs</a></td>        </tr>'
 var theader = '<tr class="header"> <td><a href="javascript:Tsort(&quot;name&quot;, arr)">Name</a></td> <td><a href="javascript:Tsort(&quot;div&quot;, arr)">Division</a></td></tr>'
 var currpos;
 
-function updateTable(pos, data, string){
+function updateTable(pos, data){
   var table = document.getElementById("table");
   table.innerHTML = pheader;
   currpos = pos;
   if(pos == 'all'){
-    data.forEach(function(Player) {
-      if(Player.name != 'name'){
+    for(i = 0, j=0; i < data.length, j < 10; i++){
+      if(data[i].name != 'name'){
+        j++;
         var tr = document.createElement("tr");
-        tr.innerHTML = "<tr>          <td>" + Player.name + "</td>          <td>" + Player.team + "</td>          <td>" + Player.POS + "</td>          <td>" + Player.gp + "</td>          <td>" + Player.recs + "</td>          <td>" + (Player.rushyards + Player.recyards)  + "</td>          <td>" + Player.rectuddies + "</td>          <td>" + Player.rushtuddies + "</td>        </tr>";
+        tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + (data[i].rushyards + data[i].recyards)  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
         table.appendChild(tr);
       }
-    });
+    }
   }else if(pos == 'FLEX'){
-    data.forEach(function(Player) {
-      if(Player.POS == 'WR' || Player.POS == 'RB'){
+    for(i = 0, j=0; i < data.length, j < 10; i++){
+      if(data[i].POS == 'WR' || data[i].POS == 'RB'){
+        j++;
         var tr = document.createElement("tr");
-        tr.innerHTML = "<tr>          <td>" + Player.name + "</td>          <td>" + Player.team + "</td>          <td>" + Player.POS + "</td>          <td>" + Player.gp + "</td>          <td>" + Player.recs + "</td>          <td>" + (Player.rushyards + Player.recyards)  + "</td>          <td>" + Player.rectuddies + "</td>          <td>" + Player.rushtuddies + "</td>        </tr>";
+        tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + (data[i].rushyards + data[i].recyards)  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
         table.appendChild(tr);
       }
-    });
+    }
   }else{
-    data.forEach(function(Player) {
-      if(Player.POS == pos){
+    for(i = 0,j=0; i < data.length, j < 10; i++){
+      if(data[i].POS == pos){
+        j++;
         var tr = document.createElement("tr");
-        tr.innerHTML = "<tr>          <td>" + Player.name + "</td>          <td>" + Player.team + "</td>          <td>" + Player.POS + "</td>          <td>" + Player.gp + "</td>          <td>" + Player.recs + "</td>          <td>" + (Player.rushyards + Player.recyards)  + "</td>          <td>" + Player.rectuddies + "</td>          <td>" + Player.rushtuddies + "</td>        </tr>";
+        tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + (data[i].rushyards + data[i].recyards)  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
         table.appendChild(tr);
       }
-    });
+    }
   }
 } 
 
-function updateTTable(data, string){
+function updateTTable(data){
   var table = document.getElementById("table");
-  console.log(string);
   table.innerHTML = theader;
-  data.forEach(function(Team) {
-    if(Team.name != 'name'){
+  for(i = 0; i < data.length, i < 10; i++){
+    if(data[i].name != 'name'){
       var tr = document.createElement("tr");
-      tr.innerHTML = "<tr>          <td>" + Team.name + "</td>          <td>" + Team.div + "</td>";
+      tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].div + "</td>";
       table.appendChild(tr);
     }
-  });
+  }
 } 
 
 function searchPlayer(data){
   var name = document.getElementById("playerSearch").value;
   var table = document.getElementById("table");
-  // table.innerHTML = '<tr class="header">          <td>Name</td>          <td>Team</td>          <td>Position</td>          <td>Games Played</td>          <td>Receptions</td>          <td>Reception TDs</td>          <td>Rush TDs</td>          </tr>';
+  // table.innerHTML = '<tr class="header">          <td>Name</td>          <td>data[i]</td>          <td>Position</td>          <td>Games Played</td>          <td>Receptions</td>          <td>Reception TDs</td>          <td>Rush TDs</td>          </tr>';
   table.innerHTML = header;
   data.forEach(function(Player) {
     if(Player.name == name){
@@ -64,16 +66,16 @@ function searchTeam(data){
   var name = document.getElementById("teamSearch").value;
   var table = document.getElementById("table");
   table.innerHTML = header;
-  data.forEach(function(Player) {
-    if(Player.team == name){
+  data.forEach(function(Team) {
+    if(Team.name == name){
       var tr = document.createElement("tr");
-      tr.innerHTML = "<tr>          <td>" + Player.name + "</td>          <td>" + Player.team + "</td>          <td>" + Player.POS + "</td>          <td>" + Player.gp + "</td>          <td>" + Player.recs + "</td>          <td>" + (Player.rushyards + Player.recyards)  + "</td>          <td>" + Player.rectuddies + "</td>          <td>" + Player.rushtuddies + "</td>        </tr>";
+      tr.innerHTML = "<tr>          <td>" + Team.name + "</td>          <td>" + Team.team + "</td>          <td>" + Team.POS + "</td>          <td>" + Team.gp + "</td>          <td>" + Team.recs + "</td>          <td>" + (Team.rushyards + Team.recyards)  + "</td>          <td>" + Team.rectuddies + "</td>          <td>" + Team.rushtuddies + "</td>        </tr>";
       table.appendChild(tr);
     }
   });
 }
 
-function sort(param, data, string){
+function sort(param, data){
   //sort by name
   if(param == 'name'){
     data.sort(function (a, b) {
@@ -179,10 +181,10 @@ function sort(param, data, string){
     });
   }
 
-  updateTable(currpos, data, string);
+  updateTable(currpos, data);
 }
 
-function Tsort(param, data, string){
+function Tsort(param, data){
   //sort by name
   if(param == 'name'){
     data.sort(function (a, b) {
@@ -209,5 +211,5 @@ function Tsort(param, data, string){
       return 0;
     });
   }
-  updateTTable(data, string);
+  updateTTable(data);
 }

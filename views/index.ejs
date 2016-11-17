@@ -22,10 +22,10 @@
         <tr>
           <td>Position</td>
           <td><a href="#">QB</a></td>
-          <td><a href="javascript:updateTable('WR', arr, 'Player')">WR</a></td>
-          <td><a href="javascript:updateTable('RB', arr, 'Player')">RB</a></td>
-          <td><a href="javascript:updateTable('TE', arr, 'Player')">TE</a></td>
-          <td><a href="javascript:updateTable('FLEX', arr, 'Player')">FLEX</a></td>
+          <td><a href="javascript:updateTable('WR', arr)">WR</a></td>
+          <td><a href="javascript:updateTable('RB', arr)">RB</a></td>
+          <td><a href="javascript:updateTable('TE', arr)">TE</a></td>
+          <td><a href="javascript:updateTable('FLEX', arr)">FLEX</a></td>
         </tr>
         <tr>
           <td>Season</td>
@@ -60,30 +60,28 @@
     <div class="stats">
       <table id="table">
         <tr class="header">
-          <td><a href="javascript:sort('name', arr, 'Player')">Name</a></td>
-          <td><a href="javascript:sort('team', arr, 'Player')">Team</a></td>
-          <td><a href="javascript:sort('POS', arr, 'Player')">Position</a></td>
-          <td><a href="javascript:sort('gp', arr, 'Player')">Games Played</a></td>
-          <td><a href="javascript:sort('recs', arr, 'Player')">Receptions</a></td>
-          <td><a href="javascript:sort('yards', arr, 'Player')">Yards</a></td>
-          <td><a href="javascript:sort('rectuddies', arr, 'Player')">Reception TDs</a></td>
-          <td><a href="javascript:sort('rushtuddies', arr, 'Player')">Rush TDs</a></td>
+          <td><a href="javascript:sort('name', arr)">Name</a></td>
+          <td><a href="javascript:sort('team', arr)">Team</a></td>
+          <td><a href="javascript:sort('POS', arr)">Position</a></td>
+          <td><a href="javascript:sort('gp', arr)">Games Played</a></td>
+          <td><a href="javascript:sort('recs', arr)">Receptions</a></td>
+          <td><a href="javascript:sort('yards', arr)">Yards</a></td>
+          <td><a href="javascript:sort('rectuddies', arr)">Reception TDs</a></td>
+          <td><a href="javascript:sort('rushtuddies', arr)">Rush TDs</a></td>
         </tr>
       <script>var arr= <%- JSON.stringify(data); %></script>
-      <% data.forEach(function(Player) { %>
-        <% if(Player.name != "name"){ %>
+      <% for(i = 0; i < data.length, i < 10; i++){ %>
         <tr>
-          <td><%=Player.name %></td>
-          <td><%=Player.team %></td>
-          <td><%=Player.POS %></td>
-          <td><%=Player.gp %></td>
-          <td><%=Player.recs %></td>
-          <td><%=Player.rushyards + Player.recyards %></td>
-          <td><%=Player.rectuddies %></td>
-          <td><%=Player.rushtuddies %></td>
+          <td><%=data[i].name %></td>
+          <td><%=data[i].team %></td>
+          <td><%=data[i].POS %></td>
+          <td><%=data[i].gp %></td>
+          <td><%=data[i].recs %></td>
+          <td><%=data[i].rushyards + data[i].recyards %></td>
+          <td><%=data[i].rectuddies %></td>
+          <td><%=data[i].rushtuddies %></td>
         </tr>
-        <% } %>
-      <% }); %>
+      <% } %>
       </table>
     </div>
       

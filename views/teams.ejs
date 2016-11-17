@@ -55,12 +55,13 @@
           <td><a href="javascript:Tsort('div', arr, 'Div')">Division</a></td>
         </tr>
         <script>var arr = <%- JSON.stringify(data); %></script>
-        <% data.forEach(function(Team) { %>
-        <tr>
-          <td><%=Team.name %></td>
-          <td><%=Team.div %></td>
-        </tr>
-      <% }); %>
+        <% for(i = 0; i < data.length, i < 10; i++){ %>
+          <tr>
+            <td><%=data[i].name %></td>
+            <td><%=data[i].div %></td>
+          </tr>
+        <% } %>
+
       
       </table>
     </div>
