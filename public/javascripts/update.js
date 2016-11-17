@@ -1,11 +1,10 @@
-// var header = '<tr class="header">          <td><a href="javascript:sort(&quot;name&quot;, arr)">Name</a></td>          <td><a href="javascript:sort(&quot;team&quot;, arr)">Team</a></td>          <td><a href="javascript:sort(&quot;POS&quot;, arr)">Position</a></td>          <td><a href="javascript:sort(&quot;gp&quot;, arr)">Games Played</a></td>          <td><a href="javascript:sort(&quot;recs&quot;, arr)">Receptions</a></td>          <td><a href="javascript:sort(&quot;yards&quot;, arr)">Yards</a></td>          <td><a href="javascript:sort(&quot;rectuddies&quot;, arr)">Reception TDs</a></td>          <td><a href="javascript:sort(&quot;rushtuddies&quot;, arr)">Rush TDs</a></td>        </tr>'
-var header = '<tr class="header"> <td><a href="javascript:Tsort(&quot;name&quot;, arr)">Name</a></td> <td><a href="javascript:Tsort(&quot;div&quot;, arr)">Division</a></td></tr>'
+var pheader = '<tr class="header">          <td><a href="javascript:sort(&quot;name&quot;, arr)">Name</a></td>          <td><a href="javascript:sort(&quot;team&quot;, arr)">Team</a></td>          <td><a href="javascript:sort(&quot;POS&quot;, arr)">Position</a></td>          <td><a href="javascript:sort(&quot;gp&quot;, arr)">Games Played</a></td>          <td><a href="javascript:sort(&quot;recs&quot;, arr)">Receptions</a></td>          <td><a href="javascript:sort(&quot;yards&quot;, arr)">Yards</a></td>          <td><a href="javascript:sort(&quot;rectuddies&quot;, arr)">Reception TDs</a></td>          <td><a href="javascript:sort(&quot;rushtuddies&quot;, arr)">Rush TDs</a></td>        </tr>'
+var theader = '<tr class="header"> <td><a href="javascript:Tsort(&quot;name&quot;, arr)">Name</a></td> <td><a href="javascript:Tsort(&quot;div&quot;, arr)">Division</a></td></tr>'
 var currpos;
 
-function updateTable(pos, data){
+function updateTable(pos, data, string){
   var table = document.getElementById("table");
-  // table.innerHTML = '<tr class="header">          <td>Name</td>          <td>Team</td>          <td>Position</td>          <td>Games Played</td>          <td>Receptions</td>          <td>Reception TDs</td>          <td>Rush TDs</td>          </tr>';
-  table.innerHTML = header;
+  table.innerHTML = pheader;
   currpos = pos;
   if(pos == 'all'){
     data.forEach(function(Player) {
@@ -34,9 +33,10 @@ function updateTable(pos, data){
   }
 } 
 
-function updateTTable(data){
+function updateTTable(data, string){
   var table = document.getElementById("table");
-  table.innerHTML = header;
+  console.log(string);
+  table.innerHTML = theader;
   data.forEach(function(Team) {
     if(Team.name != 'name'){
       var tr = document.createElement("tr");
@@ -63,7 +63,6 @@ function searchPlayer(data){
 function searchTeam(data){
   var name = document.getElementById("teamSearch").value;
   var table = document.getElementById("table");
-  // table.innerHTML = '<tr class="header">          <td>Name</td>          <td>Team</td>          <td>Position</td>          <td>Games Played</td>          <td>Receptions</td>          <td>Reception TDs</td>          <td>Rush TDs</td>          </tr>';
   table.innerHTML = header;
   data.forEach(function(Player) {
     if(Player.team == name){
@@ -74,7 +73,7 @@ function searchTeam(data){
   });
 }
 
-function sort(param, data){
+function sort(param, data, string){
   //sort by name
   if(param == 'name'){
     data.sort(function (a, b) {
@@ -180,10 +179,10 @@ function sort(param, data){
     });
   }
 
-  updateTable(currpos, data);
+  updateTable(currpos, data, string);
 }
 
-function Tsort(param, data){
+function Tsort(param, data, string){
   //sort by name
   if(param == 'name'){
     data.sort(function (a, b) {
@@ -210,5 +209,5 @@ function Tsort(param, data){
       return 0;
     });
   }
-  updateTTable(data);
+  updateTTable(data, string);
 }

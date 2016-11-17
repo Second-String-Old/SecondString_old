@@ -39,12 +39,11 @@
       <div class="search">
         <form>
           <input type="text" name="team" id="teamSearch"><br>
-          <input type="button" value="Search Team">
+          <input type="button" value="Search Team" onClick="javascript:searchTTeam(arr, 'Team')">
         </form>
-        </br>
 <!--         <form>
           <input type="text" name="player" id="playerSearch"><br>
-          <input type="button" value="Search Player" onClick="javascript:searchPlayer(arr)">
+          <input type="button" value="Search Player" onClick="javascript:searchPlayer(arr, 'Team')">
         </form> -->
       </div>
     </div>
@@ -52,8 +51,8 @@
     <div class="stats">
       <table id="table">
         <tr class="header">
-          <td><a href="javascript:Tsort('name', arr)">Name</a></td>
-          <td><a href="javascript:Tsort('div', arr)">Division</a></td>
+          <td><a href="javascript:Tsort('name', arr, 'Team')">Name</a></td>
+          <td><a href="javascript:Tsort('div', arr, 'Div')">Division</a></td>
         </tr>
         <script>var arr = <%- JSON.stringify(data); %></script>
         <% data.forEach(function(Team) { %>
