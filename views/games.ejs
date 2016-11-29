@@ -9,7 +9,7 @@
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="/stylesheets/table.css" rel="stylesheet"> 
   </head>
-  <body>
+  <body onload="javascript:getGames();">
     <ul style="margin: 0;">
       <li><a href="/">Second String</a></li>
       <li><a href="/">Player Stats</a></li>
@@ -33,24 +33,33 @@
                 data: "{body}",
             })
             .done(function(data) {
-                alert("success");
                 console.log(data);
+                pop_table(data);
             })
             .fail(function() {
                 alert("error");
             });
         };
+        function pop_table(data){
+            var table = document.getElementById("statTable");
+            table.cellspacing = "100";
+            table.innerHTML = "<tr class ='header'> <td style='padding-right: 50px'>Home</td> <td style='padding-right: 50px'>Away</td> </tr>";
+            for (i=0;i< data.length;i++){
+                if(data[i].Week == "12"){
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = "<tr> <td style='padding-right: 50px'>" + data[i].HomeTeam + "</td> <td style='padding-right: 50px'>" + data[i].AwayTeam + "</tr>";
+                    table.appendChild(tr);
+                    
+                }
+            }
+       
+        };
+        
     </script>
     <h1><%= title%></h1>  
     
-    <button onclick="javascript:getGames();"></button>
-    <div class = "stats">
-        <table id ="table">
-            <tr class="header">
-                <td>Week 11</td>
-                    
-            </tr>
-        </table>
+    <div class = "stats" id = "statTable" >
+        
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
