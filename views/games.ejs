@@ -9,7 +9,7 @@
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="/stylesheets/table.css" rel="stylesheet"> 
   </head>
-  <body onload="javascript:getGames();">
+  <body onload="javascript:getGames(); javascript:getTeams(); getPlayers();">
     <ul style="margin: 0;">
       <li><a href="/">Second String</a></li>
       <li><a href="/">Player Stats</a></li>
@@ -17,6 +17,36 @@
       <li><a href="/games">Upcoming Games</a></li>
     </ul>
     <script type="text/javascript">
+        function getTeams(){
+             $.ajax({
+                url: "https://api.fantasydata.net/nfl/v2/JSON/Teams",
+                beforeSend: function(xhrObj){
+                    // Request headers
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","1b56b2ff60794b8fb2168cd46c9f63fb");
+                },
+                type: "GET",
+                // Request body
+                data: "{body}",
+            })
+            .done(function(data) {
+                console.log(data);
+            });
+        };
+        function getTeams(){
+             $.ajax({
+                url: "https://api.fantasydata.net/nfl/v2/JSON/Players",
+                beforeSend: function(xhrObj){
+                    // Request headers
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","1b56b2ff60794b8fb2168cd46c9f63fb");
+                },
+                type: "GET",
+                // Request body
+                data: "{body}",
+            })
+            .done(function(data) {
+                console.log(data);
+            });
+        };
         function getGames() {
             var params = {
                 // Request parameters
@@ -33,7 +63,7 @@
                 data: "{body}",
             })
             .done(function(data) {
-                console.log(data);
+                //console.log(data);
                 pop_table(data);
             })
             .fail(function() {
