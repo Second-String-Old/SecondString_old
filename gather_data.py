@@ -32,6 +32,7 @@ try:
 except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
+print parsed_player[0]
 #cross referencing team and player data to make team rosters
 class Team:
     def __init__(self, name, key):
@@ -46,11 +47,17 @@ teams = list()
 for team in parsed_team:
     teams.append(Team(team['FullName'],team['Key']))
 
+no_team = []
 for player in parsed_player:
+    if player['Team'] is None:
+        no_team.append(player['Name'])
     for team in teams:
         if player['Team'] == team.key:
             team.add_to_roster(player['Name'])
-        
+            
 for team in teams:
     print team.name
-    print team.roster
+    #print team.roster
+
+
+print len(no_team)
