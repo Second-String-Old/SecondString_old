@@ -40,24 +40,37 @@ class Team:
         self.name = name
         self.key = key
         
-    def add_to_roster(self, playername):
-        self.roster.append(playername)
+    def add_to_roster(self, player):
+        self.roster.append(player)
+
+class Player:
+    def __init__(self, name, team, pos, num, age):
+        self.name = name
+        self.team = team
+        self.pos = pos
+        self.num = num
+        self.age = age
 
 teams = list()
 for team in parsed_team:
     teams.append(Team(team['FullName'],team['Key']))
 
 no_team = []
+players = list()
 for player in parsed_player:
-    if player['Team'] is None:
-        no_team.append(player['Name'])
+    players.append(Player(player['Name'], player['Team'], player['Position'], player['Number'], player['Age']))
+    
+for player in players:    
+    if player.team is None:
+        no_team.append(player.name)
     for team in teams:
-        if player['Team'] == team.key:
-            team.add_to_roster(player['Name'])
+        if player.team == team.key:
+            team.add_to_roster(player)
             
 for team in teams:
     print team.name
-    #print team.roster
+    for p in team.roster:
+        print p.name
 
 
 print len(no_team)
