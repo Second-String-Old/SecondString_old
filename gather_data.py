@@ -31,8 +31,18 @@ try:
     conn.close()
 except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
+    
+try:
+    conn = httplib.HTTPSConnection('api.fantasydata.net')
+    conn.request("GET", "/nfl/v2/JSON/PlayerSeasonStats/2015REG?%s" % params, "{body}", headers)
+    response = conn.getresponse()
+    data = response.read()
+    print(data)
+    conn.close()
+except Exception as e:
+    print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
-print parsed_player[0]
+#print parsed_player[0]
 #cross referencing team and player data to make team rosters
 class Team:
     def __init__(self, name, key):
@@ -68,9 +78,10 @@ for player in players:
             team.add_to_roster(player)
             
 for team in teams:
-    print team.name
+    #print team.name
     for p in team.roster:
-        print p.name
+        pass
+        #print p.name
 
 
 print len(no_team)
