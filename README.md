@@ -15,41 +15,23 @@ some data files that we are going to pull from and cross reference with online d
 The database is set up with 20 indexes for players:
 
     name:'name',
-
     POS:'pos',
-    
     team:'team',
-    
     num:0,          //jersey number
-    
     gp:0,           //games played
-    
     att:0,          //number of rushing attempts
-    
     rushyards:0,  
-    
     rushtuddies:0,
-    
     recs:0,         //receptions
-    
     tars:0,         //targets
-    
     recyards:0,
-    
     rectuddies:0,
-    
     comp:0,       //completions
-    
     passatt:0,    //pass attempts
-    
     pyards:0,
-    
     ptds:0,
-    
     ints:0,
-    
     fum:0,
-    
     fumlost:0
     
     
