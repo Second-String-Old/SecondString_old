@@ -33,7 +33,7 @@ private:
 
 public:
   // Constructor Functions
-  Player(std::string fname_, std::string lname_) : fname(fname_), lname(lname_) {}
+  Player(std::string fname_, std::string lname_) : fname(fname_), lname(lname_), pos(""), team(""), num(""), gp(0), att(0), rushyards(0), rushtds(0), recs(0), tars(0), recyards(0), rectds(0), comp(0), patts(0), pyards(0), ptds(0), interceptions(0), fum(0), fumlost(0)   {} {}
   Player(std::string fname_, std::string lname_, std::string pos_, std::string team_, std::string num_) : fname(fname_), lname(lname_), pos(pos_), team(team_), num(num_), gp(0), att(0), rushyards(0), rushtds(0), recs(0), tars(0), recyards(0), rectds(0), comp(0), patts(0), pyards(0), ptds(0), interceptions(0), fum(0), fumlost(0)   {}
 
 
