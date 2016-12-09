@@ -112,7 +112,27 @@ int main(int argc, char* argv[])
 	
 	for(int i=0; i<10; ++i)
 	{
-		std::cout<<obs[i].get_fname()<<" "<<obs[i].get_lname()<<" "<<obs[i].get_gp()<<std::endl;
+		std::cout<<obs[i].get_fname()<<std::endl;
+		std::cout<<obs[i].get_lname()<<std::endl;
+		std::cout<<obs[i].get_pos()<<std::endl;
+		std::cout<<obs[i].get_team()<<std::endl;
+		std::cout<<obs[i].get_num()<<std::endl;
+		std::cout<<obs[i].get_gp()<<std::endl;
+		std::cout<<obs[i].get_att()<<std::endl;
+		std::cout<<obs[i].get_rushyards()<<std::endl;
+		std::cout<<obs[i].get_rushtds()<<std::endl;
+		std::cout<<obs[i].get_recs()<<std::endl;
+		std::cout<<obs[i].get_tars()<<std::endl;
+		std::cout<<obs[i].get_recyards()<<std::endl;
+		std::cout<<obs[i].get_rectds()<<std::endl;
+		std::cout<<obs[i].get_comp()<<std::endl;
+		std::cout<<obs[i].get_patts()<<std::endl;
+		std::cout<<obs[i].get_pyards()<<std::endl;
+		std::cout<<obs[i].get_ptds()<<std::endl;
+		std::cout<<obs[i].get_interceptions()<<std::endl;
+		std::cout<<obs[i].get_fum()<<std::endl;
+		std::cout<<obs[i].get_fumlost()<<std::endl;
+		std::cout<<" "<<std::endl;
 	}
 
 	
