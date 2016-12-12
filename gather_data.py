@@ -37,7 +37,7 @@ try:
     conn.request("GET", "/nfl/v2/JSON/PlayerSeasonStats/2015REG?%s" % params, "{body}", headers)
     response = conn.getresponse()
     data = response.read()
-    print(data)
+    #print(data)
     conn.close()
 except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
@@ -78,10 +78,10 @@ for player in players:
             team.add_to_roster(player)
             
 for team in teams:
-    #print team.name
+    print team.name
     for p in team.roster:
         pass
-        #print p.name
+        print "\t"+ p.name
 
 
 print len(no_team)
