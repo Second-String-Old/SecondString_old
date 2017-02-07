@@ -112,11 +112,27 @@ int main(int argc, char* argv[])
 	
 	for(int i=0; i<10; ++i)
 	{
+		std::string name = obs[i].get_fname()+" "+obs[i].get_lname();
+		std::string num = obs[i].get_num();
+		for (int z= 0; z<name.size(); ++z)
+    	{
+        	if (ispunct(name[z]))
+        	{
+            	name.erase(z--, 1);
+        	}
+    	}
+    	for (int z= 0; z<num.size(); ++z)
+    	{
+        	if (ispunct(num[z]))
+        	{
+            	num.erase(z--, 1);
+        	}
+    	}
 		std::cout<<"{"<<std::endl;
-		std::cout<<"\t'name':'"+obs[i].get_fname()+" "+obs[i].get_lname()+"',"<<std::endl;
+		std::cout<<"\t'name':'"+name+"',"<<std::endl;
 		std::cout<<"\t'POS':'"+obs[i].get_pos()+"',"<<std::endl;
 		std::cout<<"\t'team':'"+obs[i].get_team()+"',"<<std::endl;
-		std::cout<<"\t'num':'"+obs[i].get_num()+"',"<<std::endl;
+		std::cout<<"\t'num':'"+num+"',"<<std::endl;
 		std::cout<<"\t'gp':"<<obs[i].get_gp()<<","<<std::endl;
 		std::cout<<"\t'att':"<<obs[i].get_att()<<","<<std::endl;
 		std::cout<<"\t'rushyards':"<<obs[i].get_rushyards()<<","<<std::endl;
