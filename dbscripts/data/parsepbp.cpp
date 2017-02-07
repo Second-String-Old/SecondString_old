@@ -112,27 +112,27 @@ int main(int argc, char* argv[])
 	
 	for(int i=0; i<10; ++i)
 	{
-		std::cout<<obs[i].get_fname()<<std::endl;
-		std::cout<<obs[i].get_lname()<<std::endl;
-		std::cout<<obs[i].get_pos()<<std::endl;
-		std::cout<<obs[i].get_team()<<std::endl;
-		std::cout<<obs[i].get_num()<<std::endl;
-		std::cout<<obs[i].get_gp()<<std::endl;
-		std::cout<<obs[i].get_att()<<std::endl;
-		std::cout<<obs[i].get_rushyards()<<std::endl;
-		std::cout<<obs[i].get_rushtds()<<std::endl;
-		std::cout<<obs[i].get_recs()<<std::endl;
-		std::cout<<obs[i].get_tars()<<std::endl;
-		std::cout<<obs[i].get_recyards()<<std::endl;
-		std::cout<<obs[i].get_rectds()<<std::endl;
-		std::cout<<obs[i].get_comp()<<std::endl;
-		std::cout<<obs[i].get_patts()<<std::endl;
-		std::cout<<obs[i].get_pyards()<<std::endl;
-		std::cout<<obs[i].get_ptds()<<std::endl;
-		std::cout<<obs[i].get_interceptions()<<std::endl;
-		std::cout<<obs[i].get_fum()<<std::endl;
-		std::cout<<obs[i].get_fumlost()<<std::endl;
-		std::cout<<" "<<std::endl;
+		std::cout<<"{"<<std::endl;
+		std::cout<<"\t'name':'"+obs[i].get_fname()+" "+obs[i].get_lname()+"',"<<std::endl;
+		std::cout<<"\t'POS':'"+obs[i].get_pos()+"',"<<std::endl;
+		std::cout<<"\t'team':'"+obs[i].get_team()+"',"<<std::endl;
+		std::cout<<"\t'num':'"+obs[i].get_num()+"',"<<std::endl;
+		std::cout<<"\t'gp':"<<obs[i].get_gp()<<","<<std::endl;
+		std::cout<<"\t'att':"<<obs[i].get_att()<<","<<std::endl;
+		std::cout<<"\t'rushyards':"<<obs[i].get_rushyards()<<","<<std::endl;
+		std::cout<<"\t'rushtuddies':"<<obs[i].get_rushtds()<<","<<std::endl;
+		std::cout<<"\t'recs':"<<obs[i].get_recs()<<","<<std::endl;
+		std::cout<<"\t'tars':"<<obs[i].get_tars()<<","<<std::endl;
+		std::cout<<"\t'recyards':"<<obs[i].get_recyards()<<","<<std::endl;
+		std::cout<<"\t'rectuddies':"<<obs[i].get_rectds()<<","<<std::endl;
+		std::cout<<"\t'comp':"<<obs[i].get_comp()<<","<<std::endl;
+		std::cout<<"\t'passatt':"<<obs[i].get_patts()<<","<<std::endl;
+		std::cout<<"\t'pyards':"<<obs[i].get_pyards()<<","<<std::endl;
+		std::cout<<"\t'ptds':"<<obs[i].get_ptds()<<","<<std::endl;
+		std::cout<<"\t'ints':"<<obs[i].get_interceptions()<<","<<std::endl;
+		std::cout<<"\t'fum':"<<obs[i].get_fum()<<","<<std::endl;
+		std::cout<<"\t'fumlost':"<<obs[i].get_fumlost()<<","<<std::endl;
+		std::cout<<"}"<<std::endl;
 	}
 
 	
