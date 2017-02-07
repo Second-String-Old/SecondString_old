@@ -10,7 +10,7 @@
 #include "player.h"
 
 
-
+//use is ./program.exe file.csv rosters.txt
 int main(int argc, char* argv[]) 
 {
 	std::ifstream statsin(argv[1]);
@@ -21,11 +21,10 @@ int main(int argc, char* argv[])
 	std::vector<std::string> players;
 	std::vector<std::string> roster;
 	std::vector<Player> obs;
-
-
-
-	//char arr[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'};
 	std::vector<std::string> nums;
+	std::vector<std::string> teams;
+
+
 	nums.push_back("1");
 	nums.push_back("2");
 	nums.push_back("3");
@@ -36,6 +35,39 @@ int main(int argc, char* argv[])
 	nums.push_back("8");
 	nums.push_back("9");
 	nums.push_back("0");
+	teams.push_back("ARI");
+	teams.push_back("ATL");
+	teams.push_back("BAL");
+	teams.push_back("BUF");
+	teams.push_back("CAR");
+	teams.push_back("CHI");
+	teams.push_back("CIN");
+	teams.push_back("CLE");
+	teams.push_back("DAL");
+	teams.push_back("DEN");
+	teams.push_back("DET");
+	teams.push_back("GB");
+	teams.push_back("HOU");
+	teams.push_back("IND");
+	teams.push_back("JAX");
+	teams.push_back("KC");
+	teams.push_back("MIA");
+	teams.push_back("MIN");
+	teams.push_back("NE");
+	teams.push_back("NO");
+	teams.push_back("NYG");
+	teams.push_back("NYG");
+	teams.push_back("OAK");
+	teams.push_back("PHI");
+	teams.push_back("PIT");
+	teams.push_back("SD");
+	teams.push_back("SEA");
+	teams.push_back("SF");
+	teams.push_back("STL");
+	teams.push_back("TB");
+	teams.push_back("TEN");
+	teams.push_back("WAS");
+
 	
 	
 	while(statsin >> x)
@@ -46,9 +78,6 @@ int main(int argc, char* argv[])
 	{
 		roster.push_back(x);
 	}
-	//std::cout<<input.size()<<std::endl;
-	//std::cout<<roster.size()<<std::endl;
-	
 
 	for(int i=0; i<input.size(); ++i)
 	{
@@ -148,7 +177,7 @@ int main(int argc, char* argv[])
 		std::cout<<"\t'ints':"<<obs[i].get_interceptions()<<","<<std::endl;
 		std::cout<<"\t'fum':"<<obs[i].get_fum()<<","<<std::endl;
 		std::cout<<"\t'fumlost':"<<obs[i].get_fumlost()<<","<<std::endl;
-		std::cout<<"}"<<std::endl;
+		std::cout<<"},"<<std::endl;
 	}
 
 	
