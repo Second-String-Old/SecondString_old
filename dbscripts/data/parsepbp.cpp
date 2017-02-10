@@ -14,6 +14,7 @@ using namespace std;
 void init(vector<string> &nums, vector<string> &teams, vector<string> &input, vector<string> &roster, ifstream &statsin, ifstream &playersin);
 
 //use is ./program.exe file.csv rosters.txt
+//prompted for team name in 3 character code ex. atalanta = ATL
 int main(int argc, char* argv[]) 
 {
 	ifstream statsin(argv[1]);    // input player stats .csv file
@@ -25,6 +26,14 @@ int main(int argc, char* argv[])
 	vector<Player> obs;           // vector of player objects
 	vector<string> nums;          // vecotr of available numbers
 	vector<string> teams;         //
+	string teamname;
+	ofstream fileout;
+
+
+	cout<<"Enter team roster name"<<endl;
+	cin>>teamname;
+
+	fileout.open("output.txt");
 
 	init(nums, teams, input, roster,statsin,playersin);     // initialize player numbers and NFL teams	
 
@@ -62,7 +71,7 @@ int main(int argc, char* argv[])
 			
 				if (players[i][2]== roster[j+2][0]||players[i][3]== roster[j+2][0])
 				{
-					Player nextone= Player(roster[j+2], roster[j+1], roster[j+3], "ATL",roster[j]);
+					Player nextone= Player(roster[j+2], roster[j+1], roster[j+3], teamname,roster[j]);
 					bool flag = false;
 					for(int q=0; q<obs.size(); ++q)
 					{
@@ -84,7 +93,7 @@ int main(int argc, char* argv[])
 	cout<<obs.size()<<endl;
 
 	
-	for(int i=0; i<10; ++i)
+	for(int i=0; i<obs.size(); ++i)
 	{
 
 		string name = obs[i].get_fname()+" "+obs[i].get_lname();
@@ -104,28 +113,29 @@ int main(int argc, char* argv[])
             	num.erase(z--, 1);
         	}
     	}
-		cout<<"{"<<endl;
-		cout<<"\t'name':'"+name+"',"<<endl;
-		cout<<"\t'POS':'"+obs[i].get_pos()+"',"<<endl;
-		cout<<"\t'team':'"+obs[i].get_team()+"',"<<endl;
-		cout<<"\t'num':'"+num+"',"<<endl;
-		cout<<"\t'gp':"<<obs[i].get_gp()<<","<<endl;
-		cout<<"\t'att':"<<obs[i].get_att()<<","<<endl;
-		cout<<"\t'rushyards':"<<obs[i].get_rushyards()<<","<<endl;
-		cout<<"\t'rushtuddies':"<<obs[i].get_rushtds()<<","<<endl;
-		cout<<"\t'recs':"<<obs[i].get_recs()<<","<<endl;
-		cout<<"\t'tars':"<<obs[i].get_tars()<<","<<endl;
-		cout<<"\t'recyards':"<<obs[i].get_recyards()<<","<<endl;
-		cout<<"\t'rectuddies':"<<obs[i].get_rectds()<<","<<endl;
-		cout<<"\t'comp':"<<obs[i].get_comp()<<","<<endl;
-		cout<<"\t'passatt':"<<obs[i].get_patts()<<","<<endl;
-		cout<<"\t'pyards':"<<obs[i].get_pyards()<<","<<endl;
-		cout<<"\t'ptds':"<<obs[i].get_ptds()<<","<<endl;
-		cout<<"\t'ints':"<<obs[i].get_interceptions()<<","<<endl;
-		cout<<"\t'fum':"<<obs[i].get_fum()<<","<<endl;
-		cout<<"\t'fumlost':"<<obs[i].get_fumlost()<<","<<endl;
-		cout<<"},"<<endl;
+		fileout<<"{"<<endl;
+		fileout<<"\t'name':'"+name+"',"<<endl;
+		fileout<<"\t'POS':'"+obs[i].get_pos()+"',"<<endl;
+		fileout<<"\t'team':'"+obs[i].get_team()+"',"<<endl;
+		fileout<<"\t'num':'"+num+"',"<<endl;
+		fileout<<"\t'gp':"<<obs[i].get_gp()<<","<<endl;
+		fileout<<"\t'att':"<<obs[i].get_att()<<","<<endl;
+		fileout<<"\t'rushyards':"<<obs[i].get_rushyards()<<","<<endl;
+		fileout<<"\t'rushtuddies':"<<obs[i].get_rushtds()<<","<<endl;
+		fileout<<"\t'recs':"<<obs[i].get_recs()<<","<<endl;
+		fileout<<"\t'tars':"<<obs[i].get_tars()<<","<<endl;
+		fileout<<"\t'recyards':"<<obs[i].get_recyards()<<","<<endl;
+		fileout<<"\t'rectuddies':"<<obs[i].get_rectds()<<","<<endl;
+		fileout<<"\t'comp':"<<obs[i].get_comp()<<","<<endl;
+		fileout<<"\t'passatt':"<<obs[i].get_patts()<<","<<endl;
+		fileout<<"\t'pyards':"<<obs[i].get_pyards()<<","<<endl;
+		fileout<<"\t'ptds':"<<obs[i].get_ptds()<<","<<endl;
+		fileout<<"\t'ints':"<<obs[i].get_interceptions()<<","<<endl;
+		fileout<<"\t'fum':"<<obs[i].get_fum()<<","<<endl;
+		fileout<<"\t'fumlost':"<<obs[i].get_fumlost()<<","<<endl;
+		fileout<<"},"<<endl;
 	}
+	fileout.close();
 }
 
 
