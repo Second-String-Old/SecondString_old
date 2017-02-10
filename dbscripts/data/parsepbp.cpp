@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void init(vector<string> &nums, vector<string> &teams, vector<string> &input, vector<string> &roster);
+void init(vector<string> &nums, vector<string> &teams, vector<string> &input, vector<string> &roster, ifstream &statsin, ifstream &playersin);
 
 //use is ./program.exe file.csv rosters.txt
 int main(int argc, char* argv[]) 
@@ -19,7 +19,6 @@ int main(int argc, char* argv[])
 	ifstream statsin(argv[1]);    // input player stats .csv file
 	ifstream playersin(argv[2]);  // input team rosters
 
-	string x;
 	vector<string> input;         // vector of player stats 
 	vector<string> players;       //
 	vector<string> roster;        // vector of team roster
@@ -27,7 +26,7 @@ int main(int argc, char* argv[])
 	vector<string> nums;          // vecotr of available numbers
 	vector<string> teams;         //
 
-	init(nums, teams, input, roster);     // initialize player numbers and NFL teams	
+	init(nums, teams, input, roster,statsin,playersin);     // initialize player numbers and NFL teams	
 
 	for(int i=0; i<input.size(); ++i)
 	{
@@ -87,8 +86,10 @@ int main(int argc, char* argv[])
 	
 	for(int i=0; i<10; ++i)
 	{
+
 		string name = obs[i].get_fname()+" "+obs[i].get_lname();
 		string num = obs[i].get_num();
+		//remove punctuation from name and num
 		for (int z= 0; z<name.size(); ++z)
     	{
         	if (ispunct(name[z]))
@@ -128,7 +129,9 @@ int main(int argc, char* argv[])
 }
 
 
-void init(vector<string> &nums, vector<string> &teams, vector<string> &input, vector<string> &roster){
+void init(vector<string> &nums, vector<string> &teams, vector<string> &input, vector<string> &roster, ifstream &statsin, ifstream &playersin)
+{
+	string x;
 	nums.push_back("1");
 	nums.push_back("2");
 	nums.push_back("3");
@@ -160,7 +163,7 @@ void init(vector<string> &nums, vector<string> &teams, vector<string> &input, ve
 	teams.push_back("NE");
 	teams.push_back("NO");
 	teams.push_back("NYG");
-	teams.push_back("NYJ")
+	teams.push_back("NYJ");
 	teams.push_back("OAK");
 	teams.push_back("PHI");
 	teams.push_back("PIT");
@@ -181,6 +184,3 @@ void init(vector<string> &nums, vector<string> &teams, vector<string> &input, ve
 		roster.push_back(x);
 	}
 }
-
-
-
