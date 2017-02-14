@@ -12,6 +12,7 @@ roster = "{\n"
 
 teams = ['ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAX', 'KC', 'MIA', 'MIN', 'NE', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SD', 'SEA', 'SF', 'STL', 'TB', 'TEN', 'WAS']
 for x in teams:
+	roster = "{\n"
 	tempurl = url + x
 	response = urllib2.urlopen(tempurl)
 	page_source = response.read()

@@ -30,4 +30,8 @@ router.get('/index', function(req, res, next) {
   res.render('index.ejs', { title: 'Second String' });
 });
 
+router.get('/soccer', function(req, res, next){
+  res.render('soccer.ejs', {title: 'Second String Soccer'});
+});
+
 module.exports = router;

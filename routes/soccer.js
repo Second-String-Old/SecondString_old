@@ -11,12 +11,12 @@ db.on("open", function(){
   console.log("mongodb is connected!!");
 });
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/soccer', function(req, res, next) {
   var teamCollec = db.collection('Players');
   teamCollec.find().toArray(function(err, Players){
     if(err) {return console.dir(err);}
     //console.log(Players);
-    res.render('index.ejs', { title: 'Second String', data: Players });
+    res.render('soccer.ejs', { title: 'Second String Soccer', data: Players });
     // db.close(function (err){
     //   if(err) throw err;
     // });
@@ -39,12 +39,12 @@ router.get('/teams', function(req, res, next) {
   });
 });
 
-router.get('/games', function(req, res, next){
-  res.render('games.ejs', {title: 'Schedule Week 12'});
+router.get('/index', function(req, res, next) {
+  res.render('index.ejs', { title: 'Second String' });
 });
 
-router.get('/soccer', function(req, res, next){
-  res.render('soccer.ejs', {title: 'Second String Soccer'});
+router.get('/games', function(req, res, next){
+  res.render('games.ejs', {title: 'Schedule Week 12'});
 });
 
 module.exports = router;
