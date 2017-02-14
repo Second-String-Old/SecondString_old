@@ -3,13 +3,13 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
 //connecting to database
-mongoose.connect(mongodbUri);
-var db = mongoose.connection;
+/*mongoose.connect(mongodbUri);
+var db = mongoose.connection;*/
 
-db.on('error', console.error.bind(console, 'connection error:'));
+/*db.on('error', console.error.bind(console, 'connection error:'));
 db.on("open", function(){
   console.log("mongodb is connected!!");
-});
+});*/
 /* GET home page. */
 router.get('/soccer', function(req, res, next) {
   var teamCollec = db.collection('Players');
