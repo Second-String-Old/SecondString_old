@@ -31,7 +31,11 @@ router.get('/index', function(req, res, next) {
 });
 
 router.get('/soccer', function(req, res, next){
-  res.render('soccer.ejs', {title: 'Second String Soccer'});
+  var teamCollec = db.collection('Teams');
+  teamCollec.find().toArray(function(err, Teams){
+    if(err) {return console.dir(err);}
+    res.render('soccer.ejs', {title: 'Second String Soccer', data: Teams});
+  });
 });
 
 module.exports = router;
