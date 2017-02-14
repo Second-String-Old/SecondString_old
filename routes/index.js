@@ -43,8 +43,15 @@ router.get('/games', function(req, res, next){
   res.render('games.ejs', {title: 'Schedule Week 12'});
 });
 
-router.get('/soccer', function(req, res, next){
-  res.render('soccer.ejs', {title: 'Second String Soccer'});
+router.get('/soccer', function(req, res, next) {
+  var teamCollec = db.collection('Players');
+  teamCollec.find().toArray(function(err, Players){
+    if(err) {return console.dir(err);}
+    res.render('soccer.ejs', { title: 'Second String Soccer', data: Players });
+    // db.close(function (err){
+    //   if(err) throw err;
+    // });
+  });
 });
 
 module.exports = router;
