@@ -1,3 +1,5 @@
+import unirest
+
 # These code snippets use an open-source library. http://unirest.io/python
 response = unirest.get("https://sportsop-soccer-sports-open-data-v1.p.mashape.com/v1/leagues",
   headers={
@@ -5,4 +7,4 @@ response = unirest.get("https://sportsop-soccer-sports-open-data-v1.p.mashape.co
     "Accept": "application/json"
   }
 )
-print(response)
+print(str(response.body))
