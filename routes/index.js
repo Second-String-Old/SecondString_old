@@ -44,16 +44,17 @@ router.get('/games', function(req, res, next){
   res.render('games.ejs', {title: 'Schedule Week 12'});
 });
 
-router.get('/soccer', function(req, res, next){
-  var data;
-  request('http://api.football-data.org/v1/competitions/424/teams', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log(body); // Print the google web page.
-      data = body;
-    }
-    
+
+router.get('/soccer', function(req, res, next) {
+  var teamCollec = db.collection('Players');
+  teamCollec.find().toArray(function(err, Players){
+    if(err) {return console.dir(err);}
+    res.render('soccer.ejs', { title: 'Second String Soccer', data: Players });
+    // db.close(function (err){
+    //   if(err) throw err;
+    // });
+
   });
-  res.render('soccer.ejs', {title: 'Soccer - Second String', data: data});
 });
 
 module.exports = router;
