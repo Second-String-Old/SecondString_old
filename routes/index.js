@@ -1,4 +1,5 @@
 var express = require('express');
+var request = require('request');
 var router = express.Router();
 var mongoose = require('mongoose');
 var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
@@ -44,11 +45,15 @@ router.get('/games', function(req, res, next){
 });
 
 router.get('/soccer', function(req, res, next){
-  var teamCollec = db.collection('Teams');
-  teamCollec.find().toArray(function(err, Teams){
-    if(err) {return console.dir(err);}
-    res.render('soccer.ejs', {title: 'Second String Soccer', data: Teams});
+  var data;
+  request('http://api.football-data.org/v1/competitions/424/teams', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log(body); // Print the google web page.
+      data = body;
+    }
+    
   });
+  res.render('soccer.ejs', {title: 'Soccer - Second String', data: data});
 });
 
 module.exports = router;
