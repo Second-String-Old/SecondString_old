@@ -46,15 +46,16 @@ router.get('/games', function(req, res, next){
 
 
 router.get('/soccer', function(req, res, next) {
-  var teamCollec = db.collection('Players');
-  teamCollec.find().toArray(function(err, Players){
-    if(err) {return console.dir(err);}
-    res.render('soccer.ejs', { title: 'Second String Soccer', data: Players });
-    // db.close(function (err){
-    //   if(err) throw err;
-    // });
-
-  });
+  request('http://api.football-data.org/v1/fixtures?timeFrame=n1', function (error, response, body, data) {
+    if (!error && response.statusCode == 200) {
+      //console.log(body); 
+      body = JSON.parse(body);
+      console.log(body.fixtures[0].result);
+      //data = body;
+      res.render('soccer.ejs', {title: 'Soccer - Second String', data: body});
+    }
+      });
+  
 });
 
 module.exports = router;

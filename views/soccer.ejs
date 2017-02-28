@@ -59,22 +59,26 @@
     <div class="stats">
       <table id="table">
         <tr class="header">
-          <td><a href="javascript:sort('name', arr)">Name</a></td>
-          <td><a href="javascript:sort('team', arr)">Team</a></td>
-          <td><a href="javascript:sort('POS', arr)">Position</a></td>
-          <td><a href="javascript:sort('gp', arr)">Games Played</a></td>
-          <td><a href="javascript:sort('recs', arr)">Receptions</a></td>
-          <td><a href="javascript:sort('yards', arr)">Yards</a></td>
-          <td><a href="javascript:sort('rectuddies', arr)">Reception TDs</a></td>
-          <td><a href="javascript:sort('rushtuddies', arr)">Rush TDs</a></td>
+          <td><a href="javascript:sort('name', arr)">Home</a></td>
+          <td><a href="javascript:sort('team', arr)">Away</a></td>
+          <td><a href="javascript:sort('recs', arr)">Start Time</a></td>
+          <td><a href="javascript:sort('POS', arr)">Status</a></td>
+          <td><a href="javascript:sort('recs', arr)">Result</a></td>
+          <td><a href="javascript:sort('gp', arr)">Match Day</a></td>
+         
         </tr>
       <script>var arr= <%- JSON.stringify(data); %></script>
       <% for(i = 0; i < data.length, i < 10; i++){ %>
         <tr>
-          <td><%=data[i].name %></td>
-          <td><%=data[i].team %></td>
-          <td><%=data[i].POS %></td>
-          <td></td>
+          <td><%=data.fixtures[i].homeTeamName %></td>
+          <td><%=data.fixtures[i].result.goalsHomeTeam%></td>
+          <td>vs.</td>
+          <td><%=data.fixtures[i].awayTeamName %></td>
+          <td><%=data.fixtures[i].result.goalsAwayTeam%></td>
+
+          <td><%=data.fixtures[i].date %></td>
+          <td><%=data.fixtures[i].status %></td>
+          <td><%=data.fixtures[i].matchday %></td>
         </tr>
       <% } %>
       </table>
