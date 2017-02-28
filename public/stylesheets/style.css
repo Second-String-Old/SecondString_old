@@ -1,6 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #DCD0C0;
+  background-color: #4FFF82;
 }
 
 a {
@@ -12,7 +12,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #083683;
+    background-color: #590A0A;
     border: 1px solid black;
 }
 
@@ -23,7 +23,7 @@ li {
 
 li a {
     display: block;
-    color: #B8ECD7;
+    color: #FF3636;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
