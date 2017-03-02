@@ -11,6 +11,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.on("open", function(){
   console.log("mongodb is connected!!");
 });
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var teamCollec = db.collection('Players');
@@ -50,7 +51,9 @@ router.get('/soccer', function(req, res, next) {
     if (!error && response.statusCode == 200) {
       //console.log(body); 
       body = JSON.parse(body);
-      console.log(body.fixtures[0].result);
+     // console.log(body);
+      //console.log(Object.keys(body.fixtures).length);
+      
       //data = body;
       res.render('soccer.ejs', {title: 'Soccer - Second String', data: body});
     }

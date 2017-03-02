@@ -71,7 +71,7 @@
          
         </tr>
       <script>var arr= <%- JSON.stringify(data); %></script>
-      <% for(i = 0; i < data.length, i < 10; i++){ %>
+      <% for(i = 0; i < Object.keys(data.fixtures).length; i++){%>
         <tr>
           <td><%=data.fixtures[i].homeTeamName %></td>
           <td><%=data.fixtures[i].result.goalsHomeTeam%></td>
