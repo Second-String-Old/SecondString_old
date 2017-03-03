@@ -1,6 +1,6 @@
 # SecondString
 
-<img align="top" width=175 src="logo/logo.png" />
+<img align="top" width=175 src="public/images/logo.png" />
 
 Second String aims to take a new look at sports statistcal analysis.  The website will project future performance of athletes across a wide variety of different sports.  
 
