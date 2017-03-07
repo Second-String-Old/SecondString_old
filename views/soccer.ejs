@@ -58,7 +58,15 @@
     
     <div class="stats">
       <table id="table">
-        <th>Today's Matches</th>
+        <script>
+               
+        </script>
+        <th><script>var today = new Date();
+              var day = today.getDate();
+              var month = today.getMonth()+1;
+              document.write("Today's Matches - " + month + "/" + day);   
+            </script>
+        </th>
         <tr class="header">
           <td><a href="">Home</a></td>
           <td>Goals</td>
@@ -73,13 +81,12 @@
       <script>var arr= <%- JSON.stringify(data); %></script>
       <% for(i = 0; i < Object.keys(data.fixtures).length; i++){%>
         <tr>
-          <td><%=data.fixtures[i].homeTeamName %></td>
+          <td><a href= "<%= data.fixtures[i]._links.homeTeam.href%>" ><%=data.fixtures[i].homeTeamName %></a></a></td>
           <td><%=data.fixtures[i].result.goalsHomeTeam%></td>
           <td>vs.</td>
-          <td><%=data.fixtures[i].awayTeamName %></td>
+          <td><a href= "<%= data.fixtures[i]._links.homeTeam.href%>" ><%=data.fixtures[i].awayTeamName %></a></td>
           <td><%=data.fixtures[i].result.goalsAwayTeam%></td>
-
-          <td><%=data.fixtures[i].date %></td>
+          <td><%=data.fixtures[i].date.slice(11,16) %></td>
           <td><%=data.fixtures[i].status %></td>
           <td><%=data.fixtures[i].matchday %></td>
         </tr>
