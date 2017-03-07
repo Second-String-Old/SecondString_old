@@ -63,4 +63,11 @@ router.get('/soccer', function(req, res, next) {
   });
 });
 
+router.get('/soccerplayers', function(req, res, next){
+  request('http://api.football-data.org/v1/teams/66/players', function(error, response, body){
+    body = JSON.parse(body);
+    console.log(body);
+    res.render('soccerplayers.ejs', {title: 'Soccer Players - Second String', data: body}); 
+  });
+});
 module.exports = router;
