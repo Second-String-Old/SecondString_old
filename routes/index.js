@@ -49,16 +49,25 @@ router.get('/games', function(req, res, next){
 router.get('/soccer', function(req, res, next) {
   request('http://api.football-data.org/v1/fixtures?timeFrame=n1', function (error, response, body, data) {
     if (!error && response.statusCode == 200) {
-      //console.log(body); 
-      body = JSON.parse(body);
-     // console.log(body);
-      //console.log(Object.keys(body.fixtures).length);
+     
       
-      //data = body;
+      body = JSON.parse(body);
+  
+      console.log(body.fixtures[0]._links.homeTeam.href);
       res.render('soccer.ejs', {title: 'Soccer - Second String', data: body});
     }
-      });
-  
+  });
+  request('http://api.football-data.org/v1/competitions', function (error, response, body, data) {
+    body = JSON.parse(body);
+    console.log(body);
+  });
 });
 
+router.get('/soccerplayers', function(req, res, next){
+  request('http://api.football-data.org/v1/teams/66/players', function(error, response, body){
+    body = JSON.parse(body);
+    console.log(body);
+    res.render('soccerplayers.ejs', {title: 'Soccer Players - Second String', data: body}); 
+  });
+});
 module.exports = router;
