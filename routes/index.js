@@ -53,7 +53,7 @@ router.get('/soccer', function(req, res, next) {
       
       body = JSON.parse(body);
   
-      console.log(body.fixtures[0]._links.homeTeam.href);
+      //console.log(body.fixtures[0]._links.homeTeam.href);
       res.render('soccer.ejs', {title: 'Soccer - Second String', data: body});
     }
   });
@@ -66,7 +66,7 @@ router.get('/soccer', function(req, res, next) {
 router.get('/soccerplayers', function(req, res, next){
   request('http://api.football-data.org/v1/teams/66/players', function(error, response, body){
     body = JSON.parse(body);
-    console.log(body);
+    //console.log(body);
     res.render('soccerplayers.ejs', {title: 'Soccer Players - Second String', data: body}); 
   });
 });
