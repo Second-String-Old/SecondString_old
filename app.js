@@ -13,13 +13,14 @@ var users = require('./routes/users');
 
 var app = express();
 
-var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
+var mongodbUriFootball = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
+var mongodbUriSoccer = 'mongodb://pledgemaster:skilodge@ds123050.mlab.com:23050/soccer';
 //connecting to database
 
-/*mongoose.createConnection(mongodbUri);
-var db = mongoose.connection;*/
+/*mongoose.createConnection(mongodbUriFootball);
+var db = mongoose.connection;
 
-/*db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'connection error:'));
 db.on("open", function(){
   console.log("mongodb is connected!!");
 });*/
