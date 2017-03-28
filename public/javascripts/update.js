@@ -16,7 +16,7 @@ function updateTable(pos, data){
       }
     }
   }else if(pos == 'FLEX'){
-    for(i = 0; i < data.length; i++){
+    for(var i = 0; i < data.length; i++){
       if(data[i].POS == 'WR' || data[i].POS == 'RB'){
         // j++;
         var tr = document.createElement("tr");
