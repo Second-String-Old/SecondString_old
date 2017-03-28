@@ -8,16 +8,6 @@ client = MongoClient('mongodb://socceradmin:skilodge@ds123050.mlab.com:23050/soc
 db = client.soccer
 collection = db.Teams
 
-
-test_team = {
-    "_id":0,
-    "name": "Team",
-    "code": "Code",
-    "shortName": "shortName",
-    "squadMarketValue": "444,444,444"
-} 
-teams = []
-
 url = 'http://api.football-data.org/v1/teams/'
 headers = {'X-Auth-Token' :'cca045f6339142bd9b04ed961c08bd51'}
 
@@ -50,7 +40,6 @@ while x < 2000:
         "shortName": shortName,
         "squadMarketValue": squadMarketValue    
     }
-    print team
     try:
         collection.insert_one(team).inserted_id
     except: 
