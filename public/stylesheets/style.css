@@ -65,7 +65,10 @@ table, th, td {
     margin: 10px;
 }
 
-
 .stats tr {
     background-color: gray;
+}
+
+form .search{
+  padding: 5px;
 }

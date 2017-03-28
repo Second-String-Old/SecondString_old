@@ -2,15 +2,19 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 var mongoose = require('mongoose');
-var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
+var mongodbUriFootball = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
+var mongodbUriSoccer = 'mongodb://socceradmin:skilodge@ds123050.mlab.com:23050/soccer';
+
 //connecting to database
-mongoose.connect(mongodbUri);
+mongoose.connect(mongodbUriFootball);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.on("open", function(){
   console.log("mongodb is connected!!");
 });
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -47,27 +51,47 @@ router.get('/games', function(req, res, next){
 
 
 router.get('/soccer', function(req, res, next) {
-  request('http://api.football-data.org/v1/fixtures?timeFrame=n1', function (error, response, body, data) {
+  var options = {
+    url: 'http://api.football-data.org/v1/fixtures?timeFrame=n1',
+    headers: {'X-Auth-Token' :'cca045f6339142bd9b04ed961c08bd51'
+    }
+  };
+  request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
      
       
       body = JSON.parse(body);
   
-      console.log(body.fixtures[0]._links.homeTeam.href);
+      //console.log(body.fixtures[0]._links.homeTeam.href);
       res.render('soccer.ejs', {title: 'Soccer - Second String', data: body});
     }
   });
-  request('http://api.football-data.org/v1/competitions', function (error, response, body, data) {
+  /*var options = {
+    url: 'http://api.football-data.org/v1/competitions',
+    headers: {'X-Auth-Token' :'cca045f6339142bd9b04ed961c08bd51'
+    }
+  };
+  request(options, function (error, response, body, data) {
     body = JSON.parse(body);
-    console.log(body);
-  });
+  });*/
 });
 
 router.get('/soccerplayers', function(req, res, next){
-  request('http://api.football-data.org/v1/teams/66/players', function(error, response, body){
+  //889 teams to loop throughs
+  var options = {
+    url: 'http://api.football-data.org/v1/teams/66/players',
+    headers:{
+      'X-Auth-Token' :'cca045f6339142bd9b04ed961c08bd51'
+    }
+  };
+  
+  request(options, function(error, response, body){
     body = JSON.parse(body);
-    console.log(body);
+    //console.log(body);
     res.render('soccerplayers.ejs', {title: 'Soccer Players - Second String', data: body}); 
   });
+
+  
 });
+
 module.exports = router;
