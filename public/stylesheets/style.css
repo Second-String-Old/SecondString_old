@@ -3,6 +3,19 @@ body {
   background-color: #4FFF82;
 }
 
+h1 {
+    color: #ff0000;
+    text-align: center;
+}
+
+p {
+    background: #666;
+    color: #ffffff;
+    padding: 15px 10px;
+    margin: 0px 60px;
+    border-radius: 15px;
+}
+
 a {
   color: #00B7FF;
 }

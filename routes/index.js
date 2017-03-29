@@ -20,14 +20,19 @@ soccer_db.on("open", function(){
   console.log("soccer mongodb is connected!!");
 });
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    res.render('index.ejs', { title: 'Second String' });
+});
+
+
+
+router.get('/fbplayers', function(req, res, next) {
   var teamCollec = db.collection('Players');
   teamCollec.find().toArray(function(err, Players){
     if(err) {return console.dir(err);} 
     //console.log(Players);
-    res.render('index.ejs', { title: 'Second String', data: Players });
+    res.render('fbplayers.ejs', { title: 'Second String', data: Players });
     // db.close(function (err){
     //   if(err) throw err;
     // });
