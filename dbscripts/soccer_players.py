@@ -18,7 +18,7 @@ team_id = []
 for team in t_coll.find():
     team_id.append(team['_id'])
 
-or _id in team_id:
+for _id in team_id:
     r = requests.get(url+str(_id)+'/players', headers=headers).json()
     try:
         for player in r['players']:
