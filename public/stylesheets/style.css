@@ -5,38 +5,22 @@ body {
     font-weight: 400;
 }
 
-h1 {
-    text-align: center;
-}
-
-p {
-    background: #666;
-    color: #ffffff;
-    padding: 15px 10px;
-    margin: 0px 60px;
-    border-radius: 15px;
-}
-
-a {
-  color: #00B7FF;
-}
-
-ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     background-color: #590A0A;
-    border: 1px solid black;
+    border: none;
 }
 
 li {
     float: left;
-    border: 1px solid black;
+    border: none;
 }
 
 li a {
     display: block;
-    color: #A9A9A9;
+    color: #D3D3D3;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -46,10 +30,9 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    /*background-color: black;*/
-    color: white;
     text-decoration: none;
 }
+
 
 table, th, td {
     border: 1px solid black;
@@ -93,12 +76,14 @@ form .search{
 /* dropdown menu background color */
 nav .dropdown-menu {
     background-color: #E0E0E0;
+    color: #404040;
 }
 
 /* dropdown menu font color */
 nav .dropdown-menu a {
     color: 	#404040;
 }
+
 
 /* dropdown menu font color on hover */
 nav .dropdown-menu a:hover {
@@ -112,5 +97,7 @@ nav .dropdown:hover .dropdown-menu {
 
 #page-title{
     text-align: center;
+    font-weight: bold;
 }
+
 
