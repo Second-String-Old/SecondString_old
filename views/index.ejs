@@ -1,33 +1,63 @@
 <!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/home.css" rel="stylesheet">
-    <!--link href="/stylesheets/table.css" rel="stylesheet--">
-    
-    <!-- Custom CSS -->
-    <!--link href="/stylesheets/blog-home.css" rel="stylesheet"-->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <!--link href="/stylesheets/table.css" rel="stylesheet"-->
   </head>
-  
   <body>
-  
-      <!-- Navigation -->
-      <nav>
-        <ul style="margin: 0;">
-          <li><a href="/">Home</a></li>
-          <li><a href="/fbplayers">Football Player Stats</a></li>
-          <li><a href="/teams">Football Team Stats</a></li>
-          <li><a href="/games">Football Upcoming Games</a></li>
-          <li><a href="/soccer">Soccer Today's Matches</a></li>
-          <li><a href="/soccerplayers">Soccer Players</a></li>
-        </ul>
-      </nav>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="nav nav-tabs" style="margin: 0;">
+        <!-- Home -->
+        <li><a href="/">Home</a></li>
+        <!-- Football -->
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Football
+          </a>
+          <ul class="dropdown-menu">
+            <a href="/fbplayers">Football Player Stats</a>
+            <a href="/teams">Football Team Stats</a>
+            <a href="/games">Football Upcoming Games</a>
+          </ul>
+        </li>
+        <!-- Soccer -->
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Soccer
+          </a>
+          <ul class="dropdown-menu">
+            <a href="/soccer">Soccer Today's Matches</a>
+            <a href="/soccerplayers">Soccer Players</a>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- Navigation Bar -->
       
+      <!--nav>
+
+          
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Football
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><a href="/fbplayers">Football Player Stats</a></li>
+              <li><a href="/teams">Football Team Stats</a></li>
+              <li><a href="/games">Football Upcoming Games</a></li>
+            </ul>
+          </div>
+          
+
+      </nav-->
+        
       <h1 id="page-title">WELCOME TO SECOND STRING</h1>
   
       <!-- Page Content -->

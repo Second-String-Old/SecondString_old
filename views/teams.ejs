@@ -5,20 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/table.css" rel="stylesheet"> 
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/table.css" rel="stylesheet">
   </head>
   <body>
-    <ul style="margin: 0;">
-      <li><a href="/">Home</a></li>
-      <li><a href="/fbplayers">Football Player Stats</a></li>
-      <li><a href="/teams">Football Team Stats</a></li>
-      <li><a href="/games">Football Upcoming Games</a></li>
-      <li><a href="/soccer">Soccer Today's Matches</a></li>
-      <li><a href="/soccerplayers">Soccer Players</a></li>
-    </ul>
-
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="nav nav-tabs" style="margin: 0;">
+        <!-- Home -->
+        <li><a href="/">Home</a></li>
+        <!-- Football -->
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Football
+          </a>
+          <ul class="dropdown-menu">
+            <a href="/fbplayers">Football Player Stats</a>
+            <a href="/teams">Football Team Stats</a>
+            <a href="/games">Football Upcoming Games</a>
+          </ul>
+        </li>
+        <!-- Soccer -->
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Soccer
+          </a>
+          <ul class="dropdown-menu">
+            <a href="/soccer">Soccer Today's Matches</a>
+            <a href="/soccerplayers">Soccer Players</a>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- Navigation Bar -->
+    
+    
     <div class="selections" >
       <table style="width:25%; float:left;">
         <tr>

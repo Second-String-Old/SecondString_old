@@ -1,10 +1,11 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #4FFF82;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #E8E8E8;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 h1 {
-    color: #ff0000;
     text-align: center;
 }
 
@@ -24,7 +25,6 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #590A0A;
     border: 1px solid black;
 }
@@ -36,15 +36,19 @@ li {
 
 li a {
     display: block;
-    color: #FF3636;
+    color: #A9A9A9;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: green;
+    /*background-color: black;*/
+    color: white;
+    text-decoration: none;
 }
 
 table, th, td {
@@ -85,3 +89,28 @@ table, th, td {
 form .search{
   padding: 5px;
 }
+
+/* dropdown menu background color */
+nav .dropdown-menu {
+    background-color: #E0E0E0;
+}
+
+/* dropdown menu font color */
+nav .dropdown-menu a {
+    color: 	#404040;
+}
+
+/* dropdown menu font color on hover */
+nav .dropdown-menu a:hover {
+    color: 	#F5F5F5;
+}
+
+/* display dropdown menu on hover */
+nav .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#page-title{
+    text-align: center;
+}
+
