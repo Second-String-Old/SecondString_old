@@ -1,0 +1,74 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #E8E8E8;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+li {
+    float: left;
+    border: none;
+}
+
+
+li a {
+    display: block;
+    color: #D3D3D3;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Change the link color to #111 (black) on hover */
+.container-fluid li a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.selections{
+	margin: 10px 10px;
+	overflow: auto;
+}
+
+.selections td {
+  background:#FFFFFF;
+  padding: 15px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:12px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+.search{
+    border: 1px solid black;
+    float: right;
+    padding: 5px;
+    background-color: #EBEBEB;
+}
+
+.stats{
+    margin: 10px;
+}
+
+.stats tr {
+    background-color: gray;
+}
+
+form .search{
+  padding: 5px;
+}
+
+#page-title{
+    text-align: center;
+    font-weight: bold;
+}
