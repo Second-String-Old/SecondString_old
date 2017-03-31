@@ -27,12 +27,12 @@ router.get('/', function(req, res, next) {
 
 
 
-router.get('/fbplayers', function(req, res, next) {
+router.get('/football/players', function(req, res, next) {
   var teamCollec = db.collection('Players');
   teamCollec.find().toArray(function(err, Players){
     if(err) {return console.dir(err);} 
     //console.log(Players);
-    res.render('fbplayers.ejs', { title: 'Second String', data: Players });
+    res.render('football/players.ejs', { title: 'Second String', data: Players });
     // db.close(function (err){
     //   if(err) throw err;
     // });
@@ -44,23 +44,23 @@ router.get('/stats', function(req, res, next) {
   res.render('stats.ejs', { title: 'Second String' });
 });
 
-router.get('/teams', function(req, res, next) {
+router.get('/football/teams', function(req, res, next) {
   var teamCollec = db.collection('Teams');
   teamCollec.find().toArray(function(err, Teams){
     if(err) {return console.dir(err);}
-    res.render('teams.ejs', { title: 'Second String', data: Teams });
+    res.render('football/teams.ejs', { title: 'Second String', data: Teams });
     // db.close(function (err){
     //   if(err) throw err;
     // });
   });
 });
 
-router.get('/games', function(req, res, next){
-  res.render('games.ejs', {title: 'Schedule Week 12'});
+router.get('/football/games', function(req, res, next){
+  res.render('football/games.ejs', {title: 'Schedule Week 12'});
 });
 
 
-router.get('/soccer', function(req, res, next) {
+router.get('/soccer/matches', function(req, res, next) {
   var options = {
     url: 'http://api.football-data.org/v1/fixtures?timeFrame=n1',
     headers: {'X-Auth-Token' :'cca045f6339142bd9b04ed961c08bd51'
@@ -73,7 +73,7 @@ router.get('/soccer', function(req, res, next) {
       body = JSON.parse(body);
   
       //console.log(body.fixtures[0]._links.homeTeam.href);
-      res.render('soccer.ejs', {title: 'Soccer - Second String', data: body});
+      res.render('soccer/matches.ejs', {title: 'Soccer - Second String', data: body});
     }
   });
   /*var options = {
@@ -86,7 +86,7 @@ router.get('/soccer', function(req, res, next) {
   });*/
 });
 
-router.get('/soccerplayers', function(req, res, next){
+router.get('/soccer/players', function(req, res, next){
   //889 teams to loop throughs
   /*var options = {
     url: 'http://api.football-data.org/v1/teams/66/players',
@@ -104,7 +104,7 @@ router.get('/soccerplayers', function(req, res, next){
   p_coll.find({"position" : "keeper"}).toArray(function(err, players){
     if(err) {return console.dir(err);}
     console.log(players);
-    res.render('soccerplayers.ejs', { title: 'Second String - Players', data: players });
+    res.render('soccer/players.ejs', { title: 'Second String - Players', data: players });
   });
 
   

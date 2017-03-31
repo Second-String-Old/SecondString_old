@@ -5,18 +5,12 @@ body {
     font-weight: 400;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #590A0A;
-    border: none;
-}
 
 li {
     float: left;
     border: none;
 }
+
 
 li a {
     display: block;
@@ -29,8 +23,9 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+.container-fluid li a:hover {
     text-decoration: none;
+    color: white;
 }
 
 
@@ -73,31 +68,7 @@ form .search{
   padding: 5px;
 }
 
-/* dropdown menu background color */
-nav .dropdown-menu {
-    background-color: #E0E0E0;
-    color: #404040;
-}
-
-/* dropdown menu font color */
-nav .dropdown-menu a {
-    color: 	#404040;
-}
-
-
-/* dropdown menu font color on hover */
-nav .dropdown-menu a:hover {
-    color: 	#F5F5F5;
-}
-
-/* display dropdown menu on hover */
-nav .dropdown:hover .dropdown-menu {
-    display: block;
-}
-
 #page-title{
     text-align: center;
     font-weight: bold;
 }
-
-
