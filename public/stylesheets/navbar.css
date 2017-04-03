@@ -2,6 +2,8 @@
     padding: 0px;
     margin:  0px;
     background-color: #590A0A;
+    border: none;
+    border-radius: none;
 }
 
 .navbar-default ul{
