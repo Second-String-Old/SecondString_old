@@ -3,7 +3,7 @@
     margin:  0px;
     background-color: #590A0A;
     border: none;
-    border-radius: none;
+    border-radius: 0px;
 }
 
 .navbar-default ul{
