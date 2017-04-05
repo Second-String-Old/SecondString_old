@@ -4,9 +4,14 @@ Parses multiple files containing baseball information and creates
 a baseball player class
 """
 
+from pymongo import MongoClient
 import Player as pl
 import csv
+import requests
 
+client = MongoClient('mongodb://baseballadmin:skilodge4@ds011331.mlab.com:11331/mlbdb')
+db = client.mlbdb   # connect to the MLB database 
+p_col = db.Players  # connect to Players collection
 
 def makePlayer(filename):
     f = open('core/' + filename)
