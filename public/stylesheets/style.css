@@ -3,14 +3,13 @@ body {
     background-color: #E8E8E8;
     font-size: 16px;
     font-weight: 400;
+    margin-top: 60px;
 }
-
 
 li {
     float: left;
     border: none;
 }
-
 
 li a {
     display: block;

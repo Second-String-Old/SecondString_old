@@ -105,9 +105,15 @@ router.get('/soccer/players', function(req, res, next){
     if(err) {return console.dir(err);}
     console.log(players);
     res.render('soccer/players.ejs', { title: 'Second String - Players', data: players });
-  });
+  });  
+});
 
-  
+router.get('/baseball/players', function(req, res, next){
+  res.render('baseball/players.ejs', {title: 'Baseball Players'});
+});
+
+router.get('/baseball/teams', function(req, res, next){
+  res.render('baseball/teams.ejs', {title: 'Baseball Teams'});
 });
 
 module.exports = router;

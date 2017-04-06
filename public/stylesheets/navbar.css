@@ -58,3 +58,7 @@
 nav .dropdown:hover .dropdown-menu {
     display: block;
 }
+
+nav .navbar-header a.navbar-brand{
+    color: #F5F5F5;
+}
