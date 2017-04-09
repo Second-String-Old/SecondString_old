@@ -109,7 +109,12 @@ router.get('/soccer/players', function(req, res, next){
 });
 
 router.get('/baseball/players', function(req, res, next){
-  res.render('baseball/players.ejs', {title: 'Baseball Players'});
+  var teamCollec = db.collection('Players');
+  teamCollec.find().toArray(function(err, Players){
+    if(err) {return console.dir(err);} 
+
+    res.render('baseball/players.ejs', {title: 'Baseball Players'});
+  });
 });
 
 router.get('/baseball/teams', function(req, res, next){
