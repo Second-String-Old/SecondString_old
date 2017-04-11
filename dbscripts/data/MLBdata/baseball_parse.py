@@ -27,7 +27,11 @@ if __name__ == "__main__":
             "throws": row[19]
         }
         try:
-            p_col.insert_one(player).inserted_id
+            p_col.updateOne(
+                { "_id": row[0] },
+                { set: { "name": row[13] + ' ' + row[14], "weight": row[16], "height": row[17], "bats": row[18], "throws": row[19] } },
+                { upsert: True }
+            )
         except:
             pass
     print('finished')
