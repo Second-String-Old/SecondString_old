@@ -120,23 +120,23 @@
       <table id="table">
         <th>
             <script>
-                var arr= JSON.stringify(data); 
+               /* var arr= JSON.stringify(data);*/ 
             </script>
-            Team Players
+            <%=data[0].position+"'s"%>
         </th>
         <tr class="header">
           <td>Name</td>
           <td>Position</td>
-          <td>Number</td>
-          <td>Market Value</td>
+          <td>Nationality</td>
+          <td> Market Value</td>
         </tr>
       <script>var arr= <%- JSON.stringify(data); %></script>
-      <% for(i = 0; i < data.count; i++){%>
+      <% for(i = 0; i < data.length; i++){%>
         <tr>
-          <td><%=data.players[i].name %></a></a></td>
-          <td><%=data.players[i].position%></td>
-          <td><%=data.players[i].jerseyNumber%></td>
-          <td><%=data.players[i].marketValue%></td>
+          <td><%=data[i].name %></a></a></td>
+          <td><%=data[i].position%></td>
+          <td><%=data[i].nationality%></td>
+          <td><%=data[i].marketValue%></td>
         </tr>
       <% } %>
       </table>
