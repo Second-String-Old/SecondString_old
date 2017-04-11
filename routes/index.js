@@ -101,9 +101,9 @@ router.get('/soccer/players', function(req, res, next){
     res.render('soccerplayers.ejs', {title: 'Soccer Players - Second String', data: body}); 
   });*/
   var p_coll = soccer_db.collection('Players');
-  p_coll.find({"position" : "keeper"}).toArray(function(err, players){
+  p_coll.find({"position" : "Centre Back"}).toArray(function(err, players){
     if(err) {return console.dir(err);}
-    console.log(players);
+    //console.log(players);
     res.render('soccer/players.ejs', { title: 'Second String - Players', data: players });
   });  
 });
