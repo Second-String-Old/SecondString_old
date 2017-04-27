@@ -1,5 +1,29 @@
 import csv
 
+
+class Player(object):
+
+    def __init__ (self, T, N):
+
+        #start with zero
+
+        self.team = T
+        self.number = N
+        self.yards = 0
+
+    def addYards(self, y):
+
+        self.yards += int(y)
+
+    def getTeam(self):
+    	return self.team
+
+    def getNumber(self):
+    	return self.number
+
+    def getYards(self):
+    	return self.yards
+
 f = open('data/pbp-2016.csv')
 csv_f = csv.reader(f)
 
@@ -45,12 +69,51 @@ for x in range(0, size):
 		# Append the parsed data to final lists
 		oTeam.append(offTeam[x])
 		tYards.append(yards[x])
+		# print(offTeam[x] + " " + str(numbers) + " " + yards[x])
 		players.append(numbers)
 
-# for x in range(0, count):
-# 	print str(oTeam[x]) + "-" + str(tYards[x]) + "-" + str(players[x])	
-	
+PlayYards = []
+# Creates a list of Player classes
+for x in range(0, count):
+	# If list is empty, create temp Players with team & number, then increment their yards and append to PlayYards
+	if len(PlayYards) == 0:
+		p = Player(oTeam[x],players[x][0])
+		p.addYards(int(tYards[x]))
+		p2 = Player(oTeam[x], players[x][1])
+		p2.addYards(tYards[x])
+		PlayYards.append(p)
+		PlayYards.append(p2)
+	# If list has Players in it already
+	else:
+		# Booleans to track if P1 or P2 are in the list
+		found1 = 0
+		found2 = 0
+		for y in PlayYards:
+			# print y.getTeam()
+			# If either player is found, add to it's yards and mark found
+			if found1 == 0 and len(players[x]) == 2 and y.getNumber() == players[x][0] and y.getTeam() == oTeam[x]:
+				y.addYards(tYards[x])
+				# print("found")
+				found1 = 1
+			if found2 == 0 and len(players[x]) == 2 and y.getNumber() == players[x][1] and y.getTeam() == oTeam[x]:
+				y.addYards(tYards[x])
+				found2 = 1
+				# print("found2")
+			if found1 == 1 and found2 == 1:
+				break;
+		# If P1 or P2 isn't found, create new Player and add it to list
+		if len(players[x]) == 2 and found1 == 0:
+			p = Player(oTeam[x],players[x][0])
+			p.addYards(tYards[x])
+			PlayYards.append(p)
+		if len(players[x]) == 2 and found2 == 0:
+			p2 = Player(oTeam[x], players[x][1])
+			p2.addYards(tYards[x])
+			PlayYards.append(p2)
+	print str(oTeam[x]) + "-" + str(tYards[x]) + "-" + str(players[x])
 
+# for x in PlayYards:
+# 	print getTeam(x) + " - " + getNumber(x) + " - " + str(getYards(x))
 
 # For use later for file writing
 # f = open('myfile', 'w')
