@@ -1,5 +1,5 @@
 import csv
-
+from pymongo import MongoClient
 
 class Player(object):
 
@@ -110,8 +110,17 @@ for x in range(0, count):
 			p2 = Player(oTeam[x], players[x][1])
 			p2.addYards(tYards[x])
 			PlayYards.append(p2)
-	print str(oTeam[x]) + "-" + str(tYards[x]) + "-" + str(players[x])
+	# print str(oTeam[x]) + "-" + str(tYards[x]) + "-" + str(players[x])
 
+connection = MongoClient("mongodb://stc1344:stc23201@ds021356.mlab.com:21356/nfldb")
+# db = client.nfldb
+# connection = MongoClient("ds021356.mlab.com", 21356)
+db = connection.nfldb
+db.authenticate('stc1344', 'stc23201')
+
+for x in PlayYards:
+	print(x.getTeam())
+	result = db.players_copy.update({'team': x.getTeam(), 'number': x.getNumber() }, { '$inc': { 'pyards': x.getYards() } }, upsert=False)
 # for x in PlayYards:
 # 	print getTeam(x) + " - " + getNumber(x) + " - " + str(getYards(x))
 
