@@ -80,6 +80,18 @@ for x in range(0, size):
 		tYards.append(yards[x])
 		# print(offTeam[x] + " " + str(numbers) + " " + yards[x])
 		players.append(numbers)
+	if pType[x] == "RUSH":
+		count += 1
+		parsed = desc[x].split( )
+
+		for i in range(0, len(parsed)):
+			if parsed[i].find("-") != -1:
+				numbers.append(parsed[i][0:parsed[i].find("-")])
+			if len(numbers) == 2:
+				break
+		oTeam.append(offTeam[x])
+		tYards.append(yards[x])
+		players.append(numbers)
 
 PlayYards = []
 # Creates a list of Player classes
@@ -133,10 +145,10 @@ db.authenticate('pledgemaster', 'skilodge')
 for x in PlayYards:
 	# if(x.getTeam() == 'WAS'):
 	# 	print(x.getNumber())
-	# print(x.getTeam() + " " + str(x.getNumber()) + " " + str(x.getYards()))
+	print(x.getTeam() + " " + str(x.getNumber()) + " " + str(x.getYards()))
 	# print(db.Players_copy.find({'team': x.getTeam(), 'number': x.getNumber()}))
 	# print(db.Players_copy.index_information())
-	result = db.Players_copy.update_one({'team': str(x.getTeam()), 'num': str(x.getNumber()) }, { "$inc": { 'pyards': x.getYards() } }, upsert=False)
+	result = db.Players_copy.update_one({'team': str(x.getTeam()), 'num': str(x.getNumber()) }, { "$set": { 'pyards': x.getYards() } }, upsert=False)
 	# if result.matched_count > 0:
 	# 	print("MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCH\n")
 	# print(result.matched_count)
