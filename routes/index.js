@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/football/players', function(req, res, next) {
-  var teamCollec = db.collection('Players');
+  var teamCollec = db.collection('Players_copy');
   teamCollec.find().toArray(function(err, Players){
     if(err) {return console.dir(err);} 
     //console.log(Players);
