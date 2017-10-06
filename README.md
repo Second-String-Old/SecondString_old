@@ -13,7 +13,9 @@ The Mongo DB is up and the website is connected to the DB and able to pull and d
 well as search from a search box we added.  We have been playing around with the color scheme to make the view more appealing.  Now we are focused on fully populating our database.  We have 
 some data files that we are going to pull from and cross reference with online data.
 
-To get started you will need to install node, more specifically npm on your computer.  From there you will want to navigate to the directory where you have cloned this repository and run the command "npm install" to install the packages we use.  Then you can see any edits you make to code by running npm start.  This should open a browser window displaying our website being locally run.
+To get started you will need to install node, more specifically npm on your computer.
+https://nodejs.org/en/
+From there you will want to navigate to the directory where you have cloned this repository and run the command "npm install" to install the packages we use.  Then you can see any edits you make to code by running npm start.  This should open a browser window displaying our website being locally run.
 
 The database is set up with 20 indexes for players:
 
