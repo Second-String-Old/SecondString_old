@@ -1,28 +1,37 @@
 import csv
+import bson
 from pymongo import MongoClient
 
 class Player(object):
 
-    def __init__ (self, T, N):
+	def __init__ (self, T, N):
 
-        #start with zero
+		#start with zero
 
-        self.team = T
-        self.number = N
-        self.yards = 0
+		self.team = T
+		self.number = N
+		self.yards = 0
 
-    def addYards(self, y):
+	def addYards(self, y):
 
-        self.yards += int(y)
+		self.yards += int(y)
 
-    def getTeam(self):
-    	return self.team
+	def getTeam(self):
+		return self.team
 
-    def getNumber(self):
-    	return self.number
+	def getNumber(self):
+		return self.number
 
-    def getYards(self):
-    	return self.yards
+	def getYards(self):
+		return self.yards
+
+def checkInt(str):
+	try:
+		str = int(str)
+	except ValueError:
+		# print("ADNVFASKJGFLKASFDJASLKJFKAJSFDKJASDKFJALKSJDFLKJASDKFJLKSAJDFLKAJSFDLKJASDKFJSAJFDKASJDFKLJASFDJSFJ\n")
+		pass
+	return str
 
 f = open('data/pbp-2016.csv')
 csv_f = csv.reader(f)
@@ -112,15 +121,26 @@ for x in range(0, count):
 			PlayYards.append(p2)
 	# print str(oTeam[x]) + "-" + str(tYards[x]) + "-" + str(players[x])
 
-connection = MongoClient("mongodb://stc1344:stc23201@ds021356.mlab.com:21356/nfldb")
+connection = MongoClient("mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb")
 # db = client.nfldb
 # connection = MongoClient("ds021356.mlab.com", 21356)
 db = connection.nfldb
-db.authenticate('stc1344', 'stc23201')
+db.authenticate('pledgemaster', 'skilodge')
+
+# for doc in db.Players_copy.find():
+# 	print(doc)
 
 for x in PlayYards:
-	print(x.getTeam())
-	result = db.players_copy.update({'team': x.getTeam(), 'number': x.getNumber() }, { '$inc': { 'pyards': x.getYards() } }, upsert=False)
+	# if(x.getTeam() == 'WAS'):
+	# 	print(x.getNumber())
+	# print(x.getTeam() + " " + str(x.getNumber()) + " " + str(x.getYards()))
+	# print(db.Players_copy.find({'team': x.getTeam(), 'number': x.getNumber()}))
+	# print(db.Players_copy.index_information())
+	result = db.Players_copy.update_one({'team': str(x.getTeam()), 'num': str(x.getNumber()) }, { "$inc": { 'pyards': x.getYards() } }, upsert=False)
+	# if result.matched_count > 0:
+	# 	print("MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCH\n")
+	# print(result.matched_count)
+	# print(result)
 # for x in PlayYards:
 # 	print getTeam(x) + " - " + getNumber(x) + " - " + str(getYards(x))
 
