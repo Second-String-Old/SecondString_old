@@ -113,25 +113,36 @@
     <div class="stats">
       <table id = "table" class="table table-striped table-bordered table-condensed">
         <tr class="header">
-          <td><a href="javascript:sort('name', arr)">Name</a></td>
+          <td><a href="javascript:sort('lastname', arr)">Name</a></td>
           <td><a href="javascript:sort('team', arr)">Team</a></td>
-          <td><a href="javascript:sort('POS', arr)">Position</a></td>
-          <td><a href="javascript:sort('gp', arr)">Games Played</a></td>
-          <td><a href="javascript:sort('recs', arr)">Receptions</a></td>
-          <td><a href="javascript:sort('yards', arr)">Yards</a></td>
+          <td><a href="javascript:sort('pos', arr)">Position</a></td>
+          <td><a href="javascript:sort('passing_yds', arr)">Yards</a></td>
+          <td><a href="javascript:sort('recs', arr)">Passing TDs</a></td>
+          <td><a href="javascript:sort('yards', arr)">INTs</a></td>
           <td><a href="javascript:sort('rectuddies', arr)">Reception TDs</a></td>
           <td><a href="javascript:sort('rushtuddies', arr)">Rush TDs</a></td>
         </tr>
       <script>var arr= <%- JSON.stringify(data); %></script>
       <% for(i = 0; i < data.length, i < 10; i++){ %>
         <tr>
-          <td><%=data[i].name %></td>
+          <td><%=data[i].firstname+" "+data[i].lastname %></td>
           <td><%=data[i].team %></td>
-          <td><%=data[i].POS %></td>
-          <td><%=data[i].gp %></td>
-          <td><%=data[i].recs %></td>
-          <td><%=data[i].pyards %></td>
-          <td><%=data[i].rectuddies %></td>
+          <td><%=data[i].pos %></td>
+          <% if (data[i].pos == "QB") { %>
+		  		<td><%=data[i].passing_yds %></td>
+		  <% } %>
+		  <% if (data[i].pos == "WR") { %>
+		  		<td><%=data[i].receiving_yds %></td>
+		  <% } %>
+		  <% if (data[i].pos == "RB") { %>
+		  		<td><%=data[i].rushing_yds %></td>
+		  <% } else{ %>
+		  		<td> 0 </td>
+		  <% } %>
+          <td><%=data[i].passing_tds %></td>
+          <td><%=data[i].passing_int %></td>
+          <td><%=data[i].receiving_tds %></td>
+          <td><%=data[i].rushing_tds %></td>
           <td><%=data[i].rushtuddies %></td>
         </tr>
       <% } %>

@@ -8,32 +8,44 @@ function updateTable(pos, data){
   currpos = pos;
   if(pos == 'all'){
     for(i = 0; i < data.length; i++){
-      if(data[i].name != 'name'){
-        // j++;
-        var tr = document.createElement("tr");
-        tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
-        table.appendChild(tr);
+      // j++;
+      var tr = document.createElement("tr");
+      var tstring = '';
+      tstring = '<td>' + data[i].firstname + " " + data[i].lastname '</td> <td>' data[i].team '</td> <td>' data[i].pos '</td>';
+      if(data[i].pos == "QB"){
+        tstring = tstring + '<td>' + data[i].passing_yds + '</td>';
+      }else if(data[i].pos == "WR"){
+        tstring = tstring + '<td>' + data[i].receiving_yds + '</td>';
+      }else if(data[i].pos == "RB"){
+        tstring = tstring + '<td>' + data[i].rushing_yds + '</td>';
+      }else{
+        tstring = tstring + '<td>0</td>';
       }
-    }
-  }else if(pos == 'FLEX'){
-    for(var i = 0; i < data.length; i++){
-      if(data[i].POS == 'WR' || data[i].POS == 'RB'){
-        // j++;
-        var tr = document.createElement("tr");
-        tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
-        table.appendChild(tr);
-      }
-    }
-  }else{
-    for(i = 0; i < data.length; i++){
-      if(data[i].POS == pos){
-        // j++;
-        var tr = document.createElement("tr");
-        tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
-        table.appendChild(tr);
-      }
+      tstring = tstring + '<td>' + data[i].passing_tds + '</td> <td>' + data[i].passing_int + '</td> <td>' + data[i].receiving_tds + '</td> <td>' + data[i].rushing_tds + '</td>';
+      // tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
+      tr.innerHTML = tstring;
+      table.appendChild(tr);
     }
   }
+  // else if(pos == 'FLEX'){
+  //   for(var i = 0; i < data.length; i++){
+  //     if(data[i].POS == 'WR' || data[i].POS == 'RB'){
+  //       // j++;
+  //       var tr = document.createElement("tr");
+  //       tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
+  //       table.appendChild(tr);
+  //     }
+  //   }
+  // }else{
+  //   for(i = 0; i < data.length; i++){
+  //     if(data[i].POS == pos){
+  //       // j++;
+  //       var tr = document.createElement("tr");
+  //       tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
+  //       table.appendChild(tr);
+  //     }
+  //   }
+  // }
 } 
 
 function updateTTable(data){
