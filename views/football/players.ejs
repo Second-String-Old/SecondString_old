@@ -116,9 +116,9 @@
           <td><a href="javascript:sort('lastname', arr)">Name</a></td>
           <td><a href="javascript:sort('team', arr)">Team</a></td>
           <td><a href="javascript:sort('pos', arr)">Position</a></td>
-          <td><a href="javascript:sort('passing_yds', arr)">Yards</a></td>
-          <td><a href="javascript:sort('recs', arr)">Passing TDs</a></td>
-          <td><a href="javascript:sort('yards', arr)">INTs</a></td>
+          <td><a href="javascript:sort('yards', arr)">Yards</a></td>
+          <td><a href="javascript:sort('passing_tds', arr)">Passing TDs</a></td>
+          <td><a href="javascript:sort('passing_int', arr)">INTs</a></td>
           <td><a href="javascript:sort('rectuddies', arr)">Reception TDs</a></td>
           <td><a href="javascript:sort('rushtuddies', arr)">Rush TDs</a></td>
         </tr>
@@ -130,20 +130,17 @@
           <td><%=data[i].pos %></td>
           <% if (data[i].pos == "QB") { %>
 		  		<td><%=data[i].passing_yds %></td>
-		  <% } %>
-		  <% if (data[i].pos == "WR") { %>
-		  		<td><%=data[i].receiving_yds %></td>
-		  <% } %>
-		  <% if (data[i].pos == "RB") { %>
-		  		<td><%=data[i].rushing_yds %></td>
-		  <% } else{ %>
-		  		<td> 0 </td>
-		  <% } %>
+    		  <% }else if (data[i].pos == "WR") { %>
+    		  		<td><%=data[i].receiving_yds %></td>
+    		  <% }else if (data[i].pos == "RB") { %>
+    		  		<td><%=data[i].rushing_yds %></td>
+    		  <% } else{ %>
+    		  		<td> 0 </td>
+    		  <% } %>
           <td><%=data[i].passing_tds %></td>
           <td><%=data[i].passing_int %></td>
           <td><%=data[i].receiving_tds %></td>
           <td><%=data[i].rushing_tds %></td>
-          <td><%=data[i].rushtuddies %></td>
         </tr>
       <% } %>
       </table>
