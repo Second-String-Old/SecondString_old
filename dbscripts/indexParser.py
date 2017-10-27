@@ -23,6 +23,13 @@ for p in plays.players():
 				print(i)
 				indexes.append(i)
 
+# Temporary code used to generate a list of all indexes in the DB
+# f = open('indexes.txt', 'w')
+# f.write("[")
+# for i in indexes:
+# 	f.write("'"+str(i)+"'" + ', ')
+# f.write(']')
+
 # Drops the current indexes to start fresh, then goes throught the list adding all of the unique indexes to the DB
 db.nflgame_players.drop_indexes()
 for i in indexes:
