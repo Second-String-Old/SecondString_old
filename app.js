@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose =  require('mongoose');
+var $       = require( 'jquery' );
+var dt      = require( 'datatables.net' );
+var buttons = require( 'datatables.net-buttons' );
 
 
 var routes = require('./routes/index');

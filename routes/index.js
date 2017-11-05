@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 var mongoose = require('mongoose');
+var ObjectId = require('mongodb').ObjectId;
 var mongodbUriFootball = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
 var mongodbUriSoccer = 'mongodb://socceradmin:skilodge@ds123050.mlab.com:23050/soccer';
 
@@ -28,16 +29,33 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/football/players', function(req, res, next) {
+  // console.log(req.query);
   var teamCollec = db.collection('nflgame_players');
-  teamCollec.find().toArray(function(err, Players){
-    if(err) {return console.dir(err);} 
-    //console.log(Players);
-    res.render('football/players.ejs', { title: 'Second String', data: Players });
-    // db.close(function (err){
-    //   if(err) throw err;
-    // });
+  if(req.query.id){
+    teamCollec.findOne({_id: ObjectId(req.query.id)}, function(err, obj){
+      if(err) {return console.dir(err);}
+      console.log(obj);
+      console.log(req.query.id);
+      res.render('football/player.ejs', { title: 'Second String', data: obj });
+    });
+  }else{
+    teamCollec.find().toArray(function(err, Players){
+      if(err) {return console.dir(err);} 
+      //console.log(Players);
+      res.render('football/players.ejs', { title: 'Second String', data: Players });
+      // db.close(function (err){
+      //   if(err) throw err;
+      // });
+    });
+  }
+});
+
+router.get('/football/player', function(req, res, next) {
+  var teamCollec = db.collection('nflgame_players');
+  teamCollec.findOne({_id: req.params.id}, function(err, obj){
+    if(err) {return console.dir(err);}
+    res.render('football/player.ejs', { title: 'Second String', data: obj });
   });
-  
 });
 
 router.get('/stats', function(req, res, next) {
