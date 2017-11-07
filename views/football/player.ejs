@@ -69,6 +69,67 @@
         </nav>
         <!-- end navigation Bar -->
 
+        <div>
+            <h2><%=data.firstname + " " + data.lastname%></h2>
+        </div>
+
+        <% if (data.pos == "QB") { %>
+        <div class="stats-table">
+            <table>
+                <thead>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Team</td>
+                    <td>Completion Ratio</td>
+                    <td>Interceptions</td>
+                    <td>Passing Yards</td>
+                    <td>Passing TDs</td>
+                    <td>Rushing Yards</td>
+                    <td>Rushing TDs</td>
+                    <td>Fumbles</td>
+                </thead>
+                <tbody>
+                    <td><%=data.firstname%></td>
+                    <td><%=data.lastname%></td>
+                    <td><%=data.team%></td>
+                    <td><%=data.passing_cmp / data.passing_att%></td>
+                    <td><%=data.passing_int%></td>
+                    <td><%=data.passing_yds%></td>
+                    <td><%=data.passing_tds%></td>
+                    <td><%=data.rushing_yds%></td>
+                    <td><%=data.rushing_tds%></td>
+                    <td><%=data.fumbles_tot%></td>   
+                </tbody>
+            </table>
+        </div>
+        <% } else if (data.pos == "WR") { %>
+        <div class="stats-table">
+            <table>
+                <thead>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Team</td>
+                    <td>Receptions</td>
+                    <td>Targeted</td>
+                    <td>Receiving Yards</td>
+                    <td>Receiving TDs</td>
+                    <td>Fumbles</td>
+                </thead>
+                <tbody>
+                    <td><%=data.firstname%></td>
+                    <td><%=data.lastname%></td>
+                    <td><%=data.team%></td>
+                    <td><%=data.receiving_rec%></td>
+                    <td><%=data.receiving_tar%></td>
+                    <td><%=data.receiving_yds%></td>
+                    <td><%=data.receiving_tds%></td>
+                    <td><%=data.fumbles_tot%></td>   
+                </tbody>
+            </table>
+        </div>
+        <% } %>
+
+
         <!-- Footer -->
         <footer>
             <div class="row">
