@@ -102,7 +102,7 @@
                 </tbody>
             </table>
         </div>
-        <% } else if (data.pos == "WR") { %>
+        <% } else if (data.pos == "WR" || data.pos == "TE") { %>
         <div class="stats-table">
             <table>
                 <thead>
@@ -127,6 +127,75 @@
                 </tbody>
             </table>
         </div>
+        <% } else if (data.pos == "RB" || data.pos == "FB") { %>
+        <div class="stats-table">
+            <table>
+                <thead>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Team</td>
+                    <td>Rushing Attempts</td>
+                    <td>Rushing Yards</td>
+                    <td>Rushing TDs</td>
+                    <td>Receiving Yards</td>
+                    <td>Receiving TDs</td>
+                    <td>Fumbles</td>
+                </thead>
+                <tbody>
+                    <td><%=data.firstname%></td>
+                    <td><%=data.lastname%></td>
+                    <td><%=data.team%></td>
+                    <td><%=data.rushing_att%></td>
+                    <td><%=data.rushing_yds%></td>
+                    <td><%=data.rushing_tds%></td>
+                    <td><%=data.receiving_yds%></td>
+                    <td><%=data.receiving_tds%></td>
+                    <td><%=data.fumbles_tot%></td>   
+                </tbody>
+            </table>
+        </div> 
+        <% } else if (data.pos == "C" || data.pos == "OT" || data.pos == "OG" || data.pos == "G" || data.pos == "T") { %>
+        <div class="stats-table">
+            <table>
+                <thead>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Team</td>
+                </thead>
+                <tbody>
+                    <td><%=data.firstname%></td>
+                    <td><%=data.lastname%></td>
+                    <td><%=data.team%></td> 
+                </tbody>
+            </table>
+        </div>
+        <!-- <% } else if (data.pos == "DE" || data.pos == "LB" || data.pos == "NT" || data.pos == "OLB" || data.pos == "ILB" || data.pos == "SAF" || data.pos == "CB" || data.pos == "FS" || data.pos == "SS" || data.pos == "DB") { %>
+        <div class="stats-table">
+            <table>
+                <thead>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Team</td>
+                    <td>Rushing Attempts</td>
+                    <td>Rushing Yards</td>
+                    <td>Rushing TDs</td>
+                    <td>Receiving Yards</td>
+                    <td>Receiving TDs</td>
+                    <td>Fumbles</td>
+                </thead>
+                <tbody>
+                    <td><%=data.firstname%></td>
+                    <td><%=data.lastname%></td>
+                    <td><%=data.team%></td>
+                    <td><%=data.rushing_att%></td>
+                    <td><%=data.rushing_yds%></td>
+                    <td><%=data.rushing_tds%></td>
+                    <td><%=data.receiving_yds%></td>
+                    <td><%=data.receiving_tds%></td>
+                    <td><%=data.fumbles_tot%></td>   
+                </tbody>
+            </table>
+        </div> -->
         <% } %>
 
 
