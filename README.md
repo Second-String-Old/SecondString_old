@@ -24,4 +24,5 @@ A live version of the site is hosted on heroku at:
 http://second-string-demo.herokuapp.com/
     
     
-More information as well as a blog can be found here : rcos.io/projects/cwilliamson226/secondstring/profile
+More information as well as a blog can be found here: 
+https://rcos.io/projects/cwilliamson226/secondstring/profile
