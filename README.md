@@ -17,27 +17,11 @@ To get started you will need to install node, more specifically npm on your comp
 https://nodejs.org/en/
 From there you will want to navigate to the directory where you have cloned this repository and run the command "npm install" to install the packages we use.  Then you can see any edits you make to code by running npm start.  This should open a browser window displaying our website being locally run.
 
-The database is set up with 20 indexes for players:
+A list of available statistics for players can be found here:
+https://github.com/BurntSushi/nflgame/wiki/Stat-types
 
-    name:'name',
-    POS:'pos',
-    team:'team',
-    num:0,          //jersey number
-    gp:0,           //games played
-    att:0,          //number of rushing attempts
-    rushyards:0,  
-    rushtuddies:0,
-    recs:0,         //receptions
-    tars:0,         //targets
-    recyards:0,
-    rectuddies:0,
-    comp:0,       //completions
-    passatt:0,    //pass attempts
-    pyards:0,
-    ptds:0,
-    ints:0,
-    fum:0,
-    fumlost:0
+A live version of the site is hosted on heroku at:
+http://second-string-demo.herokuapp.com/
     
     
 More information as well as a blog can be found here : rcos.io/projects/cwilliamson226/secondstring/profile
