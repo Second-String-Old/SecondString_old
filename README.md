@@ -1,5 +1,6 @@
 # SecondString
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1912452e259742f29ef07917fcce0beb)](https://app.codacy.com/app/SecondString/SecondString?utm_source=github.com&utm_medium=referral&utm_content=Second-String/SecondString&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/Second-String/SecondString.svg?branch=master)](https://travis-ci.org/Second-String/SecondString)
 
 Second String aims to take a new look at sports statistcal analysis.  The website will project future performance of athletes across a wide variety of different sports. We will analyze career trends with miscellaneous other factors to try and provide an accurate projection of future performace.
