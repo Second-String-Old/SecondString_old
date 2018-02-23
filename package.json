@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -11,10 +11,11 @@
     "debug": "~2.2.0",
     "ejs": "~2.5.7",
     "express": "~4.13.1",
+    "kill-port": "^1.1.0",
     "mongodb": "~2.2.33",
     "mongoose": "~4.6.4",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0",
-    "request": "*"
+    "request": "*",
+    "serve-favicon": "~2.3.0"
   }
 }

@@ -1,4 +1,16 @@
-var express = require('express');
+
+// Second String
+// Application script that runs after command 'npm start'
+
+const express = require('express');
+const http = require('http');
+const app = express();
+const server = http.createServer(app);
+server.listen(3000, () => {
+  console.log('HTTP server listening on port 3000');
+});
+
+
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -14,7 +26,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 
-var app = express();
+//var app = express();
 
 var mongodbUriFootball = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
 var mongodbUriSoccer = 'mongodb://pledgemaster:skilodge@ds123050.mlab.com:23050/soccer';
