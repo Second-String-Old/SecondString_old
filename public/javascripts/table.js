@@ -1,29 +1,5 @@
 var mongoose = require('mongoose');
 
-function databaseConnect(){
-    var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
-    //connecting to database
-    mongoose.connect(mongodbUri);
-    var db = mongoose.connection;
-    
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.on("open", function(){
-      console.log("mongodb is connected!!");
-    });
-    
-    var teamCollec = db.collection('Teams');
-    teamCollec.find().toArray(function(err, Teams){
-        if(err) {return console.dir(err);}
-        //console.log(Teams);
-        addTable(Teams);
-      });
-      
-    mongoose.connection.db.close(function (err){
-        if(err) throw err;
-    });
-      
-}
-  
 function addTable(array){
     var tableDiv = document.getElementById("team-table");
     var table = document.createElement('TABLE');
@@ -46,7 +22,7 @@ function addTable(array){
     }
 
     //TABLE ROWS
-    for (i = 0; i < array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
         var tr = document.createElement('TR');
         for (var j = 0; j < array[i].length; j++) {
             var td = document.createElement('TD');
@@ -57,4 +33,28 @@ function addTable(array){
     }  
     tableDiv.appendChild(table);
     
+}
+
+function databaseConnect(){
+    var mongodbUri = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
+    //connecting to database
+    mongoose.connect(mongodbUri);
+    var db = mongoose.connection;
+    
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.on("open", function(){
+      console.log("mongodb is connected!!");
+    });
+    
+    var teamCollec = db.collection('Teams');
+    teamCollec.find().toArray(function(err, Teams){
+        if(err) {return console.dir(err);}
+        //console.log(Teams);
+        addTable(Teams);
+      });
+      
+    mongoose.connection.db.close(function (err){
+        if(err) throw err;
+    });
+      
 }

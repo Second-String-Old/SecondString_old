@@ -9,7 +9,7 @@ function updateTable(pos, data){
   table.innerHTML = header;
   currpos = pos;
   if(pos == 'all'){
-    for(i = 0; i < data.length; i++){
+    for(var i = 0; i < data.length; i++){
       // j++;
       var tr = document.createElement("tr");
       var tstring = '<td>' + data[i].firstname + " " + data[i].lastname+ '</td> <td>'+ data[i].team +'</td> <td>'+ data[i].pos +'</td>';
