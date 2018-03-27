@@ -21,7 +21,7 @@ var mongoose =  require("mongoose");
 // var dt      = require( 'datatables.net' );
 // var buttons = require( 'datatables.net-buttons' );
 var pg = require('pg');
-// var conString = "localhost://postgres:J4kx7v3.@localhost:5432/postgres";
+var conString = "localhost://postgres:password.@localhost:5432/postgres";
 var args = process.argv
 // var PGHOST = args[2]
 // var PGUSER = args[3]
@@ -30,13 +30,14 @@ var args = process.argv
 // var PGDBNAME = args[6]
 
 // npm start hostname username password port database
-var client = new pg.Client({
-  user: args[3],
-  host: args[2],
-  database: args[6],
-  password: args[4],
-  port: args[5],
-});
+// var client = new pg.Client({
+//   user: args[3],
+//   host: args[2],
+//   database: args[6],
+//   password: args[4],
+//   port: args[5],
+// });
+
 client.connect();
 // callback
 client.query('SELECT * FROM public.player ORDER BY player_id ASC LIMIT 100', (err, res) => {
