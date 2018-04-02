@@ -6,13 +6,13 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const server = http.createServer(app);
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log("HTTP server listening on port 3000");
 });
 
 
 var path = require("path");
-var favicon = require("serve-favicon");
+// var favicon = require("serve-favicon");
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
@@ -20,7 +20,37 @@ var mongoose =  require("mongoose");
 // var $       = require( 'jquery' );
 // var dt      = require( 'datatables.net' );
 // var buttons = require( 'datatables.net-buttons' );
+var pg = require('pg');
+var conString = "localhost://postgres:password.@localhost:5432/postgres";
+var args = process.argv
+// var PGHOST = args[2]
+// var PGUSER = args[3]
+// var PGPASSWORD = args[4]
+// var PGPORT = args[5]
+// var PGDBNAME = args[6]
 
+// npm start hostname username password port database
+// var client = new pg.Client({
+//   user: args[3],
+//   host: args[2],
+//   database: args[6],
+//   password: args[4],
+//   port: args[5],
+// });
+
+client.connect();
+// callback
+client.query('SELECT * FROM public.player ORDER BY player_id ASC LIMIT 100', (err, res) => {
+  if (err) {
+    console.log(err.stack);
+  } else {
+    console.log(res.rows[0]);
+  }
+});
+// promise
+client.query('SELECT * FROM public.player ORDER BY player_id ASC LIMIT 100')
+  .then(res => console.log(res.rows[0]))
+  .catch(e => console.error(e.stack));
 
 var routes = require("./routes/index");
 var users = require("./routes/users");
