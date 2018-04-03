@@ -1,6 +1,4 @@
 import csv
-import bson
-import re
 
 def checkAgree(desc, playtype, x):
 	parsed = []
@@ -77,13 +75,12 @@ def checkAgree(desc, playtype, x):
 	else:
 		f2.write("CASE NOT FOUND - " + playtype + ": " + desc[x])
 
-def checkInt(str):
+def checkInt(string):
 	try:
-		str = int(str)
+		string = int(string)
 	except ValueError:
-		# print("ADNVFASKJGFLKASFDJASLKJFKAJSFDKJASDKFJALKSJDFLKJASDKFJLKSAJDFLKAJSFDLKJASDKFJSAJFDKASJDFKLJASFDJSFJ\n")
 		pass
-	return str
+	return string
 
 f = open('data/pbp-2016.csv')
 f2 = open('baddesc.txt', 'w')

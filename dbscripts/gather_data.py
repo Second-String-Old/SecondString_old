@@ -8,13 +8,12 @@ headers = {
      'Ocp-Apim-Subscription-Key': "1b56b2ff60794b8fb2168cd46c9f63fb",
 }
 
-params = urllib.urlencode({
-    #none  
-})
+# no params
+params = urllib.urlencode({ })
 
 #team_data = []
 #getting team names
-try: 
+try:
     conn = httplib.HTTPSConnection('api.fantasydata.net')
     conn.request("GET", "/nfl/v2/JSON/Teams?%s" % params, "{body}", headers)
     response = conn.getresponse()

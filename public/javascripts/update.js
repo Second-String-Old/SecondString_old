@@ -5,16 +5,16 @@ var header = '<thead class="header"> <td><a href="javascript:sort(&quot;lastname
 
 function updateTable(pos, data){
 
-  function updateCell() {
+  function updateCell(i) {
     var tr = document.createElement('tr');
     var tstring = '<td>' + data[i].firstname + " " + data[i].lastname + '</td> <td>' + data[i].team + '</td> <td>' + data[i].pos + '</td>';
-    if (data[i].pos == "QB") {
+    if (data[i].pos == 'QB') {
       tstring = tstring + '<td>' + data[i].passing_yds + '</td>';
     }
-    else if (data[i].pos == "WR") {
+    else if (data[i].pos == 'WR') {
       tstring = tstring + '<td>' + data[i].receiving_yds + '</td>';
     }
-    else if (data[i].pos == "RB") {
+    else if (data[i].pos == 'RB') {
       tstring = tstring + '<td>' + data[i].rushing_yds + '</td>';
     }
     else {
@@ -27,23 +27,23 @@ function updateTable(pos, data){
     return { tr, tstring };
   }
 
-  var table = document.getElementById("table");
+  var table = document.getElementById('table');
   table.innerHTML = header;
   currpos = pos;
   if(pos == 'all'){
     for(var i = 0; i < data.length; i++){
-      var { tr, tstring } = updateCell();
+      var { tr, tstring } = updateCell(i);
     }
   }else if(pos == 'FLEX'){
     for(var i = 0; i < data.length; i++){
       if(data[i].pos == 'WR' || data[i].pos == 'RB'){
-        var { tr, tstring } = updateCell();        
+        var { tr, tstring } = updateCell(i);        
       }
     }
   }else{
     for(i = 0; i < data.length; i++){
       if(data[i].pos == pos){
-        var { tr, tstring } = updateCell();
+        var { tr, tstring } = updateCell(i);
       }
     }
   }

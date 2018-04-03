@@ -1,6 +1,5 @@
 import urllib2
 from bs4 import BeautifulSoup
-import re
 
 soup = BeautifulSoup(open("NE.html"), 'html.parser')
 url = 'http://www.nfl.com/teams/roster?team='

@@ -19,7 +19,7 @@ db.getCollection('Players').insert({
     ints:2,
     fum:3,
     fumlost:1
-    })
+    });
     
 
 

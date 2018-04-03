@@ -3,7 +3,6 @@
 # Python script that uses nflgame to pull stats of all players then pushes them to the MongoDB
 
 import nflgame
-import json
 from pymongo import MongoClient
 
 # Imports the stats from the 2016 season

@@ -5,7 +5,6 @@ a baseball player class
 """
 
 from pymongo import MongoClient
-import requests
 import csv
 import sys
 
