@@ -2,27 +2,27 @@
 // Second String
 // Application script that runs after command 'npm start'
 
-const express = require("express");
-const http = require("http");
+const express = require('express');
+const http = require('http');
 const app = express();
 const server = http.createServer(app);
 server.listen(process.env.PORT || 3000, () => {
-  console.log("HTTP server listening on port 3000");
+  console.log('HTTP server listening on port 3000');
 });
 
 
-var path = require("path");
+var path = require('path');
 // var favicon = require("serve-favicon");
-var logger = require("morgan");
-var cookieParser = require("cookie-parser");
-var bodyParser = require("body-parser");
-var mongoose =  require("mongoose");
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var mongoose =  require('mongoose');
 // var $       = require( 'jquery' );
 // var dt      = require( 'datatables.net' );
 // var buttons = require( 'datatables.net-buttons' );
 var pg = require('pg');
-var conString = "localhost://postgres:password.@localhost:5432/postgres";
-var args = process.argv
+var conString = 'localhost://postgres:password.@localhost:5432/postgres';
+var args = process.argv;
 // var PGHOST = args[2]
 // var PGUSER = args[3]
 // var PGPASSWORD = args[4]
@@ -58,8 +58,8 @@ var users = require("./routes/users");
 
 //var app = express();
 
-var mongodbUriFootball = "mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb";
-var mongodbUriSoccer = "mongodb://pledgemaster:skilodge@ds123050.mlab.com:23050/soccer";
+var mongodbUriFootball = 'mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb';
+var mongodbUriSoccer = 'mongodb://pledgemaster:skilodge@ds123050.mlab.com:23050/soccer';
 //connecting to database
 
 /*mongoose.createConnection(mongodbUriFootball);
@@ -93,8 +93,8 @@ db.on("open", function(){
 });*/
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 /*app.use('/', function(req, res) {
   var teamCollec = db.collection('Teams');
@@ -107,11 +107,11 @@ app.set("view engine", "ejs");
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger("dev"));
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 // app.use('/teams', users);
@@ -120,7 +120,7 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error("Not Found");
+  var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -129,10 +129,10 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get("env") === "development") {
+if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render("error", {
+    res.render('error', {
       message: err.message,
       error: err
     });
@@ -147,7 +147,7 @@ if (app.get("env") === "development") {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render("error", {
+  res.render('error', {
     message: err.message,
     error: {}
   });

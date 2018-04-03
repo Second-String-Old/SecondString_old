@@ -4,6 +4,29 @@ var currpos = 'all';
 var header = '<thead class="header"> <td><a href="javascript:sort(&quot;lastname&quot;, arr)">Name</a></td> <td><a href="javascript:sort(&quot;team&quot;, arr)">Team</a></td> <td><a href="javascript:sort(&quot;pos&quot;, arr)">Position</a></td> <td><a href="javascript:sort(&quot;yards&quot;, arr)">Yards</a></td> <td><a href="javascript:sort(&quot;passing_tds&quot;, arr)">Passing TDs</a></td> <td><a href="javascript:sort(&quot;passing_int&quot;, arr)">INTs</a></td> <td><a href="javascript:sort(&quot;rectuddies&quot;, arr)">Reception TDs</a></td> <td><a href="javascript:sort(&quot;rushtuddies&quot;, arr)">Rush TDs</a></td></thead>';
 
 function updateTable(pos, data){
+
+  function updateCell() {
+    var tr = document.createElement('tr');
+    var tstring = '<td>' + data[i].firstname + " " + data[i].lastname + '</td> <td>' + data[i].team + '</td> <td>' + data[i].pos + '</td>';
+    if (data[i].pos == "QB") {
+      tstring = tstring + '<td>' + data[i].passing_yds + '</td>';
+    }
+    else if (data[i].pos == "WR") {
+      tstring = tstring + '<td>' + data[i].receiving_yds + '</td>';
+    }
+    else if (data[i].pos == "RB") {
+      tstring = tstring + '<td>' + data[i].rushing_yds + '</td>';
+    }
+    else {
+      tstring = tstring + '<td>0</td>';
+    }
+    tstring = tstring + '<td>' + data[i].passing_tds + '</td> <td>' + data[i].passing_int + '</td> <td>' + data[i].receiving_tds + '</td> <td>' + data[i].rushing_tds + '</td>';
+    // tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
+    tr.innerHTML = tstring;
+    table.appendChild(tr);
+    return { tr, tstring };
+  }
+
   var table = document.getElementById("table");
   table.innerHTML = header;
   currpos = pos;
@@ -24,64 +47,42 @@ function updateTable(pos, data){
       }
     }
   }
-
-  function updateCell() {
-    var tr = document.createElement("tr");
-    var tstring = '<td>' + data[i].firstname + " " + data[i].lastname + '</td> <td>' + data[i].team + '</td> <td>' + data[i].pos + '</td>';
-    if (data[i].pos == "QB") {
-      tstring = tstring + '<td>' + data[i].passing_yds + '</td>';
-    }
-    else if (data[i].pos == "WR") {
-      tstring = tstring + '<td>' + data[i].receiving_yds + '</td>';
-    }
-    else if (data[i].pos == "RB") {
-      tstring = tstring + '<td>' + data[i].rushing_yds + '</td>';
-    }
-    else {
-      tstring = tstring + '<td>0</td>';
-    }
-    tstring = tstring + '<td>' + data[i].passing_tds + '</td> <td>' + data[i].passing_int + '</td> <td>' + data[i].receiving_tds + '</td> <td>' + data[i].rushing_tds + '</td>';
-    // tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].team + "</td>          <td>" + data[i].POS + "</td>          <td>" + data[i].gp + "</td>          <td>" + data[i].recs + "</td>          <td>" + data[i].pyards  + "</td>          <td>" + data[i].rectuddies + "</td>          <td>" + data[i].rushtuddies + "</td>        </tr>";
-    tr.innerHTML = tstring;
-    table.appendChild(tr);
-    return { tr, tstring };
-  }
 } 
 
 function updateTTable(data){
-  var table = document.getElementById("table");
+  var table = document.getElementById('table');
   table.innerHTML = theader;
   for(i = 0; i < data.length, i < 10; i++){
     if(data[i].name != 'name'){
-      var tr = document.createElement("tr");
-      tr.innerHTML = "<tr>          <td>" + data[i].name + "</td>          <td>" + data[i].div + "</td>";
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<tr>          <td>' + data[i].name + '</td>          <td>' + data[i].div + '</td>';
       table.appendChild(tr);
     }
   }
 } 
 
 function searchPlayer(data){
-  var name = document.getElementById("playerSearch").value;
-  var table = document.getElementById("table");
+  var name = document.getElementById('playerSearch').value;
+  var table = document.getElementById('table');
   // table.innerHTML = '<tr class="header">          <td>Name</td>          <td>data[i]</td>          <td>Position</td>          <td>Games Played</td>          <td>Receptions</td>          <td>Reception TDs</td>          <td>Rush TDs</td>          </tr>';
   table.innerHTML = header;
   data.forEach(function(Player) {
     if(Player.name == name){
-      var tr = document.createElement("tr");
-      tr.innerHTML = "<tr>          <td>" + Player.name + "</td>          <td>" + Player.team + "</td>          <td>" + Player.POS + "</td>          <td>" + Player.gp + "</td>          <td>" + Player.recs + "</td>          <td>" + (Player.rushyards + Player.recyards)  + "</td>          <td>" + Player.rectuddies + "</td>          <td>" + Player.rushtuddies + "</td>        </tr>";
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<tr>          <td>' + Player.name + '</td>          <td>' + Player.team + '</td>          <td>' + Player.POS + '</td>          <td>' + Player.gp + '</td>          <td>' + Player.recs + '</td>          <td>' + (Player.rushyards + Player.recyards)  + '</td>          <td>' + Player.rectuddies + '</td>          <td>' + Player.rushtuddies + '</td>        </tr>';
       table.appendChild(tr);
     }
   });
 }
 
 function searchTeam(data){
-  var name = document.getElementById("teamSearch").value;
-  var table = document.getElementById("table");
+  var name = document.getElementById('teamSearch').value;
+  var table = document.getElementById('table');
   table.innerHTML = header;
   data.forEach(function(Team) {
     if(Team.name == name){
-      var tr = document.createElement("tr");
-      tr.innerHTML = "<tr>          <td>" + Team.name + "</td>          <td>" + Team.team + "</td>          <td>" + Team.POS + "</td>          <td>" + Team.gp + "</td>          <td>" + Team.recs + "</td>          <td>" + (Team.rushyards + Team.recyards)  + "</td>          <td>" + Team.rectuddies + "</td>          <td>" + Team.rushtuddies + "</td>        </tr>";
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<tr>          <td>' + Team.name + '</td>          <td>' + Team.team + '</td>          <td>' + Team.POS + '</td>          <td>' + Team.gp + '</td>          <td>' + Team.recs + '</td>          <td>' + (Team.rushyards + Team.recyards)  + '</td>          <td>' + Team.rectuddies + '</td>          <td>' + Team.rushtuddies + '</td>        </tr>';
       table.appendChild(tr);
     }
   });
