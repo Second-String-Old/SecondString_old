@@ -1,4 +1,7 @@
-import httplib, urllib, base64, errno, json
+import httplib
+import urllib
+import base64
+import json
 
 headers = {
     #request headers
@@ -6,7 +9,7 @@ headers = {
 }
 
 params = urllib.urlencode({
-  #none  
+    #none  
 })
 
 #team_data = []
@@ -31,7 +34,7 @@ try:
     conn.close()
 except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
-    
+
 try:
     conn = httplib.HTTPSConnection('api.fantasydata.net')
     conn.request("GET", "/nfl/v2/JSON/PlayerSeasonStats/2015REG?%s" % params, "{body}", headers)
@@ -44,7 +47,7 @@ except Exception as e:
 
 #print parsed_player[0]
 #cross referencing team and player data to make team rosters
-class Team:
+class Team(object):
     def __init__(self, name, key):
         self.roster = []
         self.name = name
@@ -53,7 +56,7 @@ class Team:
     def add_to_roster(self, player):
         self.roster.append(player)
 
-class Player:
+class Player(object):
     def __init__(self, name, team, pos, num, age):
         self.name = name
         self.team = team

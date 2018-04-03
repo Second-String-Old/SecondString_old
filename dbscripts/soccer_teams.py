@@ -14,7 +14,6 @@ headers = {'X-Auth-Token' :'cca045f6339142bd9b04ed961c08bd51'}
 x=890
 while x < 2000:
     r = requests.get(url+str(x), headers=headers).json()
-    
     try: 
         name = r['name']
     except:

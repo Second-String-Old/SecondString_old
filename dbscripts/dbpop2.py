@@ -43,11 +43,11 @@ for p in plays.players():
 
 	# Goes through all indexes in the DB for each player and sets their stats to what they should be, or sets it to 0 if they don't have those stats
 	# This was added after the original script as we were having errors of grabbing undefined data for different players
-	for x in range(0, len(allInds)):
-		if allInds[x] in stats1:
-			tempPlayer[allInds[x]] = stats2[stats1.index(allInds[x])]
+	for x in allInds:
+		if x in stats1:
+			tempPlayer[x] = stats2[stats1.index(x)]
 		else:
-			tempPlayer[allInds[x]] = 0
+			tempPlayer[x] = 0
 
 	# Inserts the temp player to the DB
 	db.nflgame_players.insert_one(tempPlayer)
