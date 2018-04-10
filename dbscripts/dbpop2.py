@@ -4,12 +4,12 @@
 
 import nflgame
 import json
-from pymongo import MongoClient
+# from pymongo import MongoClient
 
-# Imports the stats from the 2016 season
+# Imports th estats from the 2016 season
 games = nflgame.games(2016)
 plays = nflgame.combine_plays(games)
-
+print 'done'
 # Creates a connection through pyMongo to the specified MongoDB, in this case mLab
 connection = MongoClient("mongodb://pledgemaster:skilodge@ds021356.mlab.com:21356/nfldb")
 db = connection.nfldb
@@ -20,7 +20,9 @@ allInds = ['passing_att', 'passing_yds', 'passing_cmp', 'passing_cmp_air_yds', '
 
 # Goes through all players in the DB
 number = 0
+print 'loop start'
 for p in plays.players():
+	print p
 	# Checks to make sure that the player exists before accessing it's variables
 	if not p or not p.player or not p.player.first_name or not p.player.last_name or not p.player.position or not p.team:
 		continue
@@ -50,4 +52,5 @@ for p in plays.players():
 			tempPlayer[allInds[x]] = 0
 
 	# Inserts the temp player to the DB
-	db.nflgame_players.insert_one(tempPlayer)
+	# db.nflgame_players.insert_one(tempPlayer)
+	print tempPlayer

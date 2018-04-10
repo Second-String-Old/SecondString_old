@@ -21,8 +21,8 @@ var mongoose =  require("mongoose");
 // var dt      = require( 'datatables.net' );
 // var buttons = require( 'datatables.net-buttons' );
 var pg = require('pg');
-var conString = "localhost://postgres:password.@localhost:5432/postgres";
-var args = process.argv
+var conString = "localhost://postgres:password@localhost:5432/postgres";
+// var args = process.argv
 // var PGHOST = args[2]
 // var PGUSER = args[3]
 // var PGPASSWORD = args[4]
@@ -38,19 +38,29 @@ var args = process.argv
 //   port: args[5],
 // });
 
-client.connect();
-// callback
-client.query('SELECT * FROM public.player ORDER BY player_id ASC LIMIT 100', (err, res) => {
-  if (err) {
-    console.log(err.stack);
-  } else {
-    console.log(res.rows[0]);
-  }
-});
-// promise
-client.query('SELECT * FROM public.player ORDER BY player_id ASC LIMIT 100')
-  .then(res => console.log(res.rows[0]))
-  .catch(e => console.error(e.stack));
+// var client = new pg.Client(conString);
+// client.connect();
+// // callback
+// QUARTERBACK
+// SELECT player.first_name, player.last_name, player.team, player.position,
+
+// SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds
+// FROM play_player
+// LEFT JOIN player ON player.player_id = play_player.player_id
+// LEFT JOIN game ON game.gsis_id = play_player.gsis_id
+// WHERE game.season_year = 2012 AND game.season_type = 'Regular'
+// GROUP BY player.full_name
+// client.query('SELECT * FROM public.player ORDER BY player_id ASC LIMIT 100', (err, res) => {
+//   if (err) {
+//     console.log(err.stack);
+//   } else {
+//     console.log(res.rows[0]);
+//   }
+// });
+// // promise
+// client.query('SELECT * FROM public.player ORDER BY player_id ASC LIMIT 100')
+//   .then(res => console.log(res.rows[0]))
+//   .catch(e => console.error(e.stack));
 
 var routes = require("./routes/index");
 var users = require("./routes/users");
