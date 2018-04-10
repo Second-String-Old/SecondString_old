@@ -1,5 +1,5 @@
+
 import csv
-import bson
 from pymongo import MongoClient
 
 class Player(object):
@@ -25,13 +25,12 @@ class Player(object):
 	def getYards(self):
 		return self.yards
 
-def checkInt(str):
+def checkInt(string):
 	try:
-		str = int(str)
+		string = int(string)
 	except ValueError:
-		# print("ADNVFASKJGFLKASFDJASLKJFKAJSFDKJASDKFJALKSJDFLKJASDKFJLKSAJDFLKAJSFDLKJASDKFJSAJFDKASJDFKLJASFDJSFJ\n")
 		pass
-	return str
+	return string
 
 f = open('data/pbp-2016.csv')
 csv_f = csv.reader(f)
@@ -69,9 +68,9 @@ for x in range(0, size):
 		parsed = desc[x].split( )
 		# print parsed
 		# Go through parsed, find the - character to find their numbers, and append the player numbers to the list
-		for i in range(0, len(parsed)):
-			if parsed[i].find("-") != -1:
-				numbers.append(parsed[i][0:parsed[i].find("-")])
+		for data in parsed:
+			if data.find("-") != -1:
+				numbers.append(data[0:data.find("-")])
 			if len(numbers) == 2:
 				break
 		# print numbers
@@ -84,9 +83,9 @@ for x in range(0, size):
 		count += 1
 		parsed = desc[x].split( )
 
-		for i in range(0, len(parsed)):
-			if parsed[i].find("-") != -1:
-				numbers.append(parsed[i][0:parsed[i].find("-")])
+		for data in parsed:
+			if data.find("-") != -1:
+				numbers.append(data[0:data.find("-")])
 			if len(numbers) == 2:
 				break
 		oTeam.append(offTeam[x])

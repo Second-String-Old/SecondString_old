@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 function addTable(array){
-    var tableDiv = document.getElementById("team-table");
+    var tableDiv = document.getElementById('team-table');
     var table = document.createElement('TABLE');
     var tableBody = document.createElement('TBODY');
     
@@ -9,8 +9,8 @@ function addTable(array){
     table.appendChild(tableBody);
 
     var heading = new Array();
-    heading[0] = "Team";
-    heading[1] = "Division";
+    heading[0] = 'Team';
+    heading[1] = 'Division';
     
     var tr = document.createElement('TR');
     tableBody.appendChild(tr);
@@ -42,8 +42,8 @@ function databaseConnect(){
     var db = mongoose.connection;
     
     db.on('error', console.error.bind(console, 'connection error:'));
-    db.on("open", function(){
-      console.log("mongodb is connected!!");
+    db.on('open', function(){
+      console.log('mongodb is connected!!');
     });
     
     var teamCollec = db.collection('Teams');

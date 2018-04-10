@@ -45,7 +45,6 @@ int main(int argc, char* argv[])
 			if(input[i][0]==nums[j][0]&& input[i][0+1]=='-'||input[i][0]==nums[j][0]&& input[i][0+2]=='-')
 			{
 				string name;
-				int count =0;
 				players.push_back(input[i]);
 			}
 		}	

@@ -1,17 +1,19 @@
-import httplib, urllib, base64, errno, json
+import httplib
+import urllib
+import base64
+import json
 
 headers = {
     #request headers
      'Ocp-Apim-Subscription-Key': "1b56b2ff60794b8fb2168cd46c9f63fb",
 }
 
-params = urllib.urlencode({
-  #none  
-})
+# no params
+params = urllib.urlencode({ })
 
 #team_data = []
 #getting team names
-try: 
+try:
     conn = httplib.HTTPSConnection('api.fantasydata.net')
     conn.request("GET", "/nfl/v2/JSON/Teams?%s" % params, "{body}", headers)
     response = conn.getresponse()
@@ -31,7 +33,7 @@ try:
     conn.close()
 except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
-    
+
 try:
     conn = httplib.HTTPSConnection('api.fantasydata.net')
     conn.request("GET", "/nfl/v2/JSON/PlayerSeasonStats/2015REG?%s" % params, "{body}", headers)
@@ -44,7 +46,7 @@ except Exception as e:
 
 #print parsed_player[0]
 #cross referencing team and player data to make team rosters
-class Team:
+class Team(object):
     def __init__(self, name, key):
         self.roster = []
         self.name = name
@@ -53,7 +55,7 @@ class Team:
     def add_to_roster(self, player):
         self.roster.append(player)
 
-class Player:
+class Player(object):
     def __init__(self, name, team, pos, num, age):
         self.name = name
         self.team = team

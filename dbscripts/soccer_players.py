@@ -1,8 +1,6 @@
+
 from pymongo import MongoClient
 import requests
-
-import pprint
-
 
 client = MongoClient('mongodb://socceradmin:skilodge@ds123050.mlab.com:23050/soccer')
 db = client.soccer
@@ -74,10 +72,5 @@ for _id in team_id:
                 pass
     except:
         pass
-
+        
 print 'done'
-    
-    
-   
-    
-    

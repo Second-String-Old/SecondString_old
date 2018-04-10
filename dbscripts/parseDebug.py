@@ -1,17 +1,16 @@
 import csv
-import bson
-import re
 
 def checkAgree(desc, playtype, x):
 	parsed = []
 	numbers = []
 	parsed = desc[x].split( )
-	for i in range(0, len(parsed)):
-		if parsed[i].find("-") != -1:
-			numbers.append(parsed[i][0:parsed[i].find("-")])
-	for i in range(0, len(numbers)):
-		numbers[i] = numbers[i].replace("(", "")
-		numbers[i] = numbers[i].replace("[", "")
+	for data in parsed:
+		if data.find("-") != -1:
+			numbers.append(data[0:data.find("-")])
+
+	for num in numbers:
+		num = num.replace("(", "")
+		num = num.replace("[", "")
 
 	if playtype == "PASS":
 		if len(numbers) != 3:
@@ -76,13 +75,12 @@ def checkAgree(desc, playtype, x):
 	else:
 		f2.write("CASE NOT FOUND - " + playtype + ": " + desc[x])
 
-def checkInt(str):
+def checkInt(string):
 	try:
-		str = int(str)
+		string = int(string)
 	except ValueError:
-		# print("ADNVFASKJGFLKASFDJASLKJFKAJSFDKJASDKFJALKSJDFLKJASDKFJLKSAJDFLKAJSFDLKJASDKFJSAJFDKASJDFKLJASFDJSFJ\n")
 		pass
-	return str
+	return string
 
 f = open('data/pbp-2016.csv')
 f2 = open('baddesc.txt', 'w')

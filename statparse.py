@@ -1,5 +1,4 @@
 import csv
-import bson
 from pymongo import MongoClient
 
 class Player(object):
