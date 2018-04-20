@@ -71,7 +71,7 @@
     
     
     <div class="selections" >
-      <table style="width:25%; float:left;">
+<!--       <table style="width:25%; float:left;">
         <tr>
           <td>Position</td>
           <td><a href="javascript:updateTable('QB', arr)">QB</a></td>
@@ -96,8 +96,8 @@
           <td><a href="#">4</a></td>
           <td><a href="#">3</a></td>
         </tr>
-      </table>
-      <div class="search">
+      </table> -->
+<!--       <div class="search">
         <form>
           <input type="text" name="team" id="teamSearch"><br>
           <input type="button" value="Search Team" onClick="javascript:searchTeam(arr, 'Player')">
@@ -108,7 +108,7 @@
           <input type="button" value="Search Player" onClick="javascript:searchPlayer(arr, 'Player')">
         </form>
       </div>
-    </div>
+    </div> -->
     
     <div class="stats">
       <table id = "table" class="table table-striped table-bordered table-condensed">
@@ -116,35 +116,23 @@
           <td><a href="javascript:sort('lastname', arr)">Name</a></td>
           <td><a href="javascript:sort('team', arr)">Team</a></td>
           <td><a href="javascript:sort('pos', arr)">Position</a></td>
-          <td><a href="javascript:sort('yards', arr)">Yards</a></td>
+          <td><a href="javascript:sort('yards', arr)">Passing Yards</a></td>
           <td><a href="javascript:sort('passing_tds', arr)">Passing TDs</a></td>
-          <td><a href="javascript:sort('passing_int', arr)">INTs</a></td>
-          <td><a href="javascript:sort('rectuddies', arr)">Reception TDs</a></td>
-          <td><a href="javascript:sort('rushtuddies', arr)">Rush TDs</a></td>
+          <td><a href="javascript:sort('passing_int', arr)">Passing Attempts</a></td>
+          <td><a href="javascript:sort('rectuddies', arr)">Passing Completions</a></td>
+          <td><a href="javascript:sort('rushtuddies', arr)">Interceptions</a></td>
         </thead>
-        <tbody>
-        	<script>var arr= <%- JSON.stringify(data); %></script>
-        	<% for(i = 0; i < data.length, i < 50; i++){ %>
+        <% console.log(data[0]) %>
+        	<% for(i = 0; i < data.length; i++){ %>
 	          	<tr>
-	          	<!-- var id = <%- data[i].firstname; %></script> -->
-	          	<!-- window.open(window.location.href + id); -->
-	          	<!-- <% var id = data[i].firstname %> -->
-	            <td onclick="openfun('<%=data[i]._id%>')"><%=data[i].firstname+" "+data[i].lastname %></td>
+              <td><%=data[i].full_name %></td>
 	            <td><%=data[i].team %></td>
-	            <td><%=data[i].pos %></td>
-	            <% if (data[i].pos == "QB") { %>
-	  		  		<td><%=data[i].passing_yds %></td>
-	      		  <% }else if (data[i].pos == "WR") { %>
-	      		  		<td><%=data[i].receiving_yds %></td>
-	      		  <% }else if (data[i].pos == "RB") { %>
-	      		  		<td><%=data[i].rushing_yds %></td>
-	      		  <% } else{ %>
-	      		  		<td> 0 </td>
-	      		  <% } %>
+	            <td><%=data[i].position %></td>
+	            <td><%=data[i].passing_yds %></td>
 	            <td><%=data[i].passing_tds %></td>
-	            <td><%=data[i].passing_int %></td>
-	            <td><%=data[i].receiving_tds %></td>
-	            <td><%=data[i].rushing_tds %></td>
+	            <td><%=data[i].passing_att %></td>
+	            <td><%=data[i].passing_cmp %></td>
+              <td><%=data[i].passing_int %></td>
 	          	</tr>
         	<% } %>
         </tbody>

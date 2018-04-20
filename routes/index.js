@@ -11,10 +11,31 @@ var QueryStream = require('pg-query-stream');
 var JSONStream = require('JSONStream');
 var conString = "localhost://postgres:password@localhost:5432/nfldbnew";
 // var client = new pg.Client(conString);
+// *******************************************
+// *******************************************
+// ** THIS IS THE SQL QUERY TO GET QB DATA  **
+// *******************************************
+// *******************************************
+// SELECT
+    // player.full_name, SUM(play_player.passing_yds) AS passing_yds, SUM(play_player.passing_tds) AS passing_tds, SUM(play_player.passing_att) AS passing_att,
+    // SUM(play_player.passing_cmp) AS passing_cmp, SUM(play_player.passing_tds) AS passing_tds
+// FROM play_player
+// LEFT JOIN player ON player.player_id = play_player.player_id
+// LEFT JOIN game ON game.gsis_id = play_player.gsis_id
+// GROUP BY player.full_name
+// ORDER BY passing_yds DESC
+// LIMIT 100
 var sql = 
         'select ' +
             'public.player.full_name, ' +
-            'sum(public.play_player.passing_yds) as passing_yds ' +
+            'public.player.team, ' +
+            'public.player.position, ' +
+            'sum(public.play_player.passing_yds) as passing_yds, ' +
+            'sum(public.play_player.passing_tds) as passing_tds, ' +
+            'sum(public.play_player.passing_att) as passing_att, ' +
+            'sum(public.play_player.passing_cmp) as passing_cmp, ' +
+            'sum(public.play_player.passing_tds) as passing_tds, ' +
+            'sum(public.play_player.passing_int) as passing_int ' +
         'from ' +
             'public.play_player ' +
         'left join ' +
@@ -22,20 +43,20 @@ var sql =
         'left join ' +
             'public.game on (public.game.gsis_id = public.play_player.gsis_id) ' +
         'where ' +
-            "public.game.season_year = 2012 and public.game.season_type = 'Regular' " +
+            "public.game.season_year = 2012 and public.game.season_type = 'Regular' and public.player.team != 'UNK'" +
         'group ' +
-            'by public.player.full_name ' +
+            'by public.player.full_name, public.player.team, public.player.position ' +
         'having ' +
             'sum(public.play_player.passing_yds) >= 4500 ' +
         'order ' +
             'by passing_yds DESC';
 // var sql2 = "SELECT player.full_name, SUM(play_player) AS passing_yds FROM play_player LEFT JOIN player ON (player.player_id = play_player.player_id) LEFT JOIN game ON (game.gsis_id = play_player.gsis_id) WHERE game.season_year = 2012 AND game.season_type = 'Regular' GROUP BY player.full_name HAVING SUM(play_player.passing_yds) >= 4500 ORDER BY passing_yds DESC";
-var pool = new pg.Pool({
-  connectionString: conString,
-});
-pool.query(sql)
-  .then((res) => console.log(res.rows)) // brianc
-  .catch(err => console.error('Error executing query', err.stack));
+// var pool = new pg.Pool({
+//   connectionString: conString,
+// });
+// pool.query(sql)
+//   .then((res) => console.log(res.rows)) // brianc
+//   .catch(err => console.error('Error executing query', err.stack));
 // pool.connect(function(err, client, done) {
 //   if(err) throw err;
 //   client.query(sql, (err, res) => {
@@ -113,6 +134,22 @@ router.get('/', function(req, res, next) {
 
 router.get('/football/players', function(req, res, next) {
   var players;
+  var pool = new pg.Pool({
+    connectionString: conString,
+  });
+  var response = [];
+  var client = new pg.Client(conString);
+  client.connect(function(err) {
+    client.query(sql, function(err, results) {
+      // console.log(JSON.stringify(results.rows));
+      res.render('football/players.ejs', {title: 'Second String', data: (results.rows)});
+    });
+  });
+  // pool.query(sql)
+  //   .then((resp) => response.push(resp.rows)) // brianc
+  //   // .then((resp) => res.render('football/players.ejs', {title: 'Second String', data: resp.rows})) // brianc
+  //   .catch(err => console.error('Error executing query', err.stack));
+  // console.log(response);
   // if(req.query.id){
     // client.query("SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds FROM play_player LEFT JOIN player ON player.player_id = play_player.player_id LEFT JOIN game ON game.gsis_id = play_player.gsis_id WHERE game.season_year = 2012 AND game.season_type = 'Regular' GROUP BY player.full_name HAVING SUM(play_player.passing_yds) >= 4500 ORDER BY passing_yds DESC", (err, response) => {
       // if (err) {
@@ -126,44 +163,44 @@ router.get('/football/players', function(req, res, next) {
   // else{
   //   res.render
   // }
-  console.log(req.query);
-  var teamCollec = db.collection('nflgame_players');
-  if(req.query.id){
-    teamCollec.findOne({_id: ObjectId(req.query.id)}, function(err, obj){
-      if(err) {return console.dir(err);}
-      console.log(obj);
-      console.log(req.query.id);
-      res.render('football/player.ejs', { title: 'Second String', data: obj });
-    });
-  }else{
-    teamCollec.find().toArray(function(err, Players){
-      if(err) {return console.dir(err);} 
-      //console.log(Players);
-      // const query = {
-      //   text: "SELECT $1, SUM($2) AS $3 FROM $4 LEFT JOIN $5 ON $6 = $7 LEFT JOIN $8 ON $9 = $10 WHERE $11 = $12 AND $13 = $14 GROUP BY $15 HAVING SUM($16) >= $17 ORDER BY $18 DESC",
-      //   values: ['player.full_name', 'play_player.passing_yds', 'passing_yds', 'play_player', 'player', 'player.player_id', 'play_player.player_id', 'game', 'game.gsis_id', 'play_player.gsis_id', 'game.season_year', '2012', 'game.season_type', "'Regular'", 'player.full_name', 'play_player.passing_yds', '4500', 'passing_yds'],
-      // }
-//       const query = {
-// //         text: "SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds" + "FROM play_player"
-// // LEFT JOIN player ON player.player_id = play_player.player_id
-// // LEFT JOIN game ON game.gsis_id = play_player.gsis_id
-// // WHERE game.season_year = 2012 AND game.season_type = 'Regular'
-// // GROUP BY player.full_name
-// // HAVING SUM(play_player.passing_yds) >= 4500
-// // ORDER BY passing_yds DESC
-//         text: "SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds FROM play_player LEFT JOIN player ON player.player_id = play_player.player_id LEFT JOIN game ON game.gsis_id = play_player.gsis_id WHERE game.season_year = 2012 AND game.season_type = 'Regular' GROUP BY player.full_name HAVING SUM(play_player.passing_yds) >= 4500 ORDER BY passing_yds DESC",
-//       }
-//       client.query(query, (err, response) => {
-//       // client.query("SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds FROM play_player LEFT JOIN player ON player.player_id = play_player.player_id LEFT JOIN game ON game.gsis_id = play_player.gsis_id WHERE game.season_year = 2012 AND game.season_type = 'Regular' GROUP BY player.full_name HAVING SUM(play_player.passing_yds) >= 4500 ORDER BY passing_yds DESC", (err, response) => {
-//       // client.query("SELECT * from team", (err, response) => {
-//         console.log(response) ;
-//       });
-      res.render('football/players.ejs', { title: 'Second String', data: Players });
-      // db.close(function (err){
-      //   if(err) throw err;
-      // });
-    });
-  }
+  // console.log(req.query);
+  // var teamCollec = db.collection('nflgame_players');
+//   if(req.query.id){
+//     teamCollec.findOne({_id: ObjectId(req.query.id)}, function(err, obj){
+//       if(err) {return console.dir(err);}
+//       console.log(obj);
+//       console.log(req.query.id);
+//       res.render('football/player.ejs', { title: 'Second String', data: obj });
+//     });
+//   }else{
+//     teamCollec.find().toArray(function(err, Players){
+//       if(err) {return console.dir(err);} 
+//       //console.log(Players);
+//       // const query = {
+//       //   text: "SELECT $1, SUM($2) AS $3 FROM $4 LEFT JOIN $5 ON $6 = $7 LEFT JOIN $8 ON $9 = $10 WHERE $11 = $12 AND $13 = $14 GROUP BY $15 HAVING SUM($16) >= $17 ORDER BY $18 DESC",
+//       //   values: ['player.full_name', 'play_player.passing_yds', 'passing_yds', 'play_player', 'player', 'player.player_id', 'play_player.player_id', 'game', 'game.gsis_id', 'play_player.gsis_id', 'game.season_year', '2012', 'game.season_type', "'Regular'", 'player.full_name', 'play_player.passing_yds', '4500', 'passing_yds'],
+//       // }
+// //       const query = {
+// // //         text: "SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds" + "FROM play_player"
+// // // LEFT JOIN player ON player.player_id = play_player.player_id
+// // // LEFT JOIN game ON game.gsis_id = play_player.gsis_id
+// // // WHERE game.season_year = 2012 AND game.season_type = 'Regular'
+// // // GROUP BY player.full_name
+// // // HAVING SUM(play_player.passing_yds) >= 4500
+// // // ORDER BY passing_yds DESC
+// //         text: "SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds FROM play_player LEFT JOIN player ON player.player_id = play_player.player_id LEFT JOIN game ON game.gsis_id = play_player.gsis_id WHERE game.season_year = 2012 AND game.season_type = 'Regular' GROUP BY player.full_name HAVING SUM(play_player.passing_yds) >= 4500 ORDER BY passing_yds DESC",
+// //       }
+// //       client.query(query, (err, response) => {
+// //       // client.query("SELECT player.full_name, SUM(play_player.passing_yds) AS passing_yds FROM play_player LEFT JOIN player ON player.player_id = play_player.player_id LEFT JOIN game ON game.gsis_id = play_player.gsis_id WHERE game.season_year = 2012 AND game.season_type = 'Regular' GROUP BY player.full_name HAVING SUM(play_player.passing_yds) >= 4500 ORDER BY passing_yds DESC", (err, response) => {
+// //       // client.query("SELECT * from team", (err, response) => {
+// //         console.log(response) ;
+// //       });
+//       res.render('football/players.ejs', { title: 'Second String', data: Players });
+//       // db.close(function (err){
+//       //   if(err) throw err;
+//       // });
+//     });
+  // }
 });
 
 router.get('/football/player', function(req, res, next) {
